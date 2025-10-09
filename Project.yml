@@ -1,0 +1,187 @@
+name: TPEComposable
+options:
+  bundleIdPrefix: com.tpe.composable
+  deploymentTarget:
+    iOS: "16.0"
+  developmentRegion: en
+  disableBundleAccessors: false
+  disableSynthesizedResourceAccessors: false
+
+packages:
+  Algorithms:
+    url: https://github.com/apple/swift-algorithms
+    from: 1.0.0
+  Alamofire:
+    url: https://github.com/Alamofire/Alamofire.git
+    from: 5.6.0
+
+configs:
+  Debug: debug
+  Staging: release
+  Production: release
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: 43F85566S2
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_BITCODE: NO
+    SWIFT_VERSION: 5.9
+
+targets:
+  # MARK: - Main App Target
+  TPEComposableApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+      - path: TPEComposableApp
+        excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+      - path: TPEComposableApp/Assets.xcassets
+        type: assetcatalog      
+    info:
+      path: TPEComposableApp/Info.plist
+      properties:
+        CFBundleDisplayName: TPE Composable
+        CFBundleName: TPEComposable
+        UILaunchStoryboardName: LaunchScreen
+    dependencies:
+      - target: TPEComponentSDK
+      - target: TPELoginSDK
+      - target: TPEHomepageSDK
+      - target: TPEAccountManagementSDK
+      - package: Algorithms
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app.dev}
+        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app.staging}
+        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app}
+
+  # MARK: - Component SDK (Atomic Design)
+  TPEComponentSDK:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+      - path: TPEComponentSDK
+        excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+    dependencies:
+      - package: Alamofire
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk.dev}
+        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk.staging}
+        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk}
+
+  # MARK: - Login SDK (Clean Architecture)
+  TPELoginSDK:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+      - path: TPELoginSDK
+        excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+      - path: TPELoginSDK/Assets.xcassets
+        type: assetcatalog
+    dependencies:
+      - target: TPEComponentSDK
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk.dev}
+        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk.staging}
+        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk}
+
+  # MARK: - Homepage SDK (Clean Architecture)
+  TPEHomepageSDK:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+      - path: TPEHomepageSDK
+        excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+    dependencies:
+      - target: TPEComponentSDK
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk.dev}
+        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk.staging}
+        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk}
+
+  # MARK: - Account Management SDK (Clean Architecture)
+  TPEAccountManagementSDK:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+      - path: TPEAccountManagementSDK
+        excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+    dependencies:
+      - target: TPEComponentSDK
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk.dev}
+        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk.staging}
+        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk}
+
+# MARK: - Test Targets
+  TPEComponentSDKTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+      - path: TPEComponentSDK/Tests
+    dependencies:
+      - target: TPEComponentSDK
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk.tests}
+
+  TPELoginSDKTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources: 
+     
+      - path: TPELoginSDK/Tests
+    dependencies:
+      - target: TPELoginSDK
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk.tests}
+
+# MARK: - Schemes
+schemes:
+  TPEComposable-Dev:
+    build:
+      targets:
+        TPEComposableApp: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - TPEComponentSDKTests
+        - TPELoginSDKTests
+    archive:
+      config: Debug
+
+  TPEComposable-Staging:
+    build:
+      targets:
+        TPEComposableApp: all
+    run:
+      config: Staging
+    test:
+      config: Staging
+    archive:
+      config: Staging
+
+  TPEComposable-Prod:
+    build:
+      targets:
+        TPEComposableApp: all
+    run:
+      config: Production
+    test:
+      config: Production
+    archive:
+      config: Production
