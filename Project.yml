@@ -64,6 +64,8 @@ targets:
     sources: 
       - path: TPEComponentSDK
         excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+      - path: TPEComponentSDK/Assets.xcassets
+        type: assetcatalog
     dependencies:
       - package: Alamofire
     settings:
@@ -98,6 +100,8 @@ targets:
     sources: 
       - path: TPEHomepageSDK
         excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+      - path: TPEHomepageSDK/Assets.xcassets
+        type: assetcatalog
     dependencies:
       - target: TPEComponentSDK
     settings:
@@ -121,6 +125,24 @@ targets:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk.dev}
         Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk.staging}
         Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk}
+        
+# MARK: - Networking Core SDK
+  TPENetworkingCore:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: TPENetworkingCore
+        excludes: ["**/*Tests.swift", "**/*Mock.swift"]
+    dependencies:
+      - package: Alamofire
+    settings:
+      configs:
+        Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore.dev}
+        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore.staging}
+        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore}
+
+  
 
 # MARK: - Test Targets
   TPEComponentSDKTests:
@@ -185,3 +207,4 @@ schemes:
       config: Production
     archive:
       config: Production
+

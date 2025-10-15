@@ -289,28 +289,6 @@ extension DesignSystemBrowser.Category {
 }
 
 
-struct HomepageTemplateCatalogView: View {
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                HeaderView(
-                    title: "Homepage Templates",
-                    subtitle: "Dashboard and overview screen templates"
-                )
-                
-                EmptyStateView(
-                    title: "Template Gallery",
-                    subtitle: "Homepage template examples will be displayed here",
-                    icon: "chart.bar.fill"
-                )
-            }
-            .padding()
-        }
-        .navigationTitle("Homepage Templates")
-        .navigationBarTitleDisplayMode(.large)
-    }
-}
-
 struct AccountTemplateCatalogView: View {
     var body: some View {
         ScrollView {

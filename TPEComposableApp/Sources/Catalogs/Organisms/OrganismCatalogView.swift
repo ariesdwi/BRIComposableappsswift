@@ -116,7 +116,7 @@ struct OrganismCatalogView: View {
         var title: String = "Welcome to TPE"
         var subtitle: String = "Sign in to access your account"
         var buttonText: String = "Sign In"
-        var backgroundColor: Color = TPEColors.blue70
+        var backgroundColor: Color = TPEColors.primaryBlue
         var showRegisterLink: Bool = true
     }
     

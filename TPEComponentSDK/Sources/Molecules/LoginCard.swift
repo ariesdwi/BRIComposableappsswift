@@ -78,7 +78,7 @@ public struct LoginCard: View {
                             
                             TPELinkText(
                                 text: "Registration Account",
-                                color: TPEColors.blue70,
+                                color: TPEColors.primaryBlue,
                                 onTap: onRegisterTap
                             )
                         }

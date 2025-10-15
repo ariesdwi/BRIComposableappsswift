@@ -212,7 +212,7 @@ public struct TPELoginBottomSheet: View {
             )
             TPELinkText(
                 text: "Forgot Username/Password?",
-                color: TPEColors.blue70,
+                color: TPEColors.primaryBlue,
                 onTap: onForgotPassword!
             )
            

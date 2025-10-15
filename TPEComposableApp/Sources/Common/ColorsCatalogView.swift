@@ -13,7 +13,7 @@ struct ColorsCatalogView: View {
         ColorGroup(
             name: "Primary",
             colors: [
-                ColorItem(name: "Blue 70", color: TPEColors.blue70, value: "#1260CC"),
+                ColorItem(name: "Blue 70", color: TPEColors.primaryBlue, value: "#1260CC"),
                 ColorItem(name: "Blue 50", color: .blue, value: "#007AFF"),
                 ColorItem(name: "Blue 30", color: .blue.opacity(0.3), value: "#B3D7FF")
             ]

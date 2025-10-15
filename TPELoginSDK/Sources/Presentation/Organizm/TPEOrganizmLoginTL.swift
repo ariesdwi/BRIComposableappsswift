@@ -34,7 +34,7 @@ public struct TPEOrganizmLoginTL: View {
     public var body: some View {
         ZStack {
             // Background
-            TPEColors.blue70
+            TPEColors.primaryBlue
                 .ignoresSafeArea()
             
             // Background Image

@@ -7,81 +7,120 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036ED2D6B6A4FAD72D58EE7B /* TPEPromoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D88F84D18992CE11A93C1D /* TPEPromoItem.swift */; };
 		055F74B76E4CCC5B7978EC1C /* TPEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9CD1FAA1194190E724FBA /* TPEColors.swift */; };
 		05C7DCAA4F0F0EB7D8108C76 /* ProgressIndicatorsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49E84EB06461EC7FC827EB6 /* ProgressIndicatorsCatalogView.swift */; };
+		06462BEC35BB772EE689ACB4 /* TPEMenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402FBFF472202C58BF82C54 /* TPEMenuRow.swift */; };
 		065FE8399A76EEEA1BBB9D80 /* OrganismCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506EC995E34DD88A3F1F52CE /* OrganismCatalogView.swift */; };
 		0A27464AC42448E3F1855D02 /* LoginTemplateCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB13EB08C1120AC3769B1EA /* LoginTemplateCatalogView.swift */; };
 		0ACC0AEA8732E5C230EC6556 /* TPEButtonCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700FD7DD68CFB24213C588F5 /* TPEButtonCatalogView.swift */; };
 		0E8AB0F47C481E651304D156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 528D11D7DD1088728E16C8DC /* Assets.xcassets */; };
 		123725A118867D87D47EB23D /* CardHeaderMolecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC197C77EBC18EDEEFAF07 /* CardHeaderMolecule.swift */; };
+		1261BAD97E4B433A9C1CA029 /* TPEBalanceIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1277BD88299BED6414309AB0 /* TPEBalanceIndicator.swift */; };
+		189041D6F381C63A408C1E23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DA11C4A83220D8616663EDBC /* Alamofire */; };
 		1D4F4EE9AB287126DC33706A /* TPELoginBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBC182F2BF2825E5DACE2F /* TPELoginBottomSheet.swift */; };
+		1DCDCA7D4C45DD12EBCE1DCD /* TPEHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25199D47C0B02C04AE9669C /* TPEHeaderTitle.swift */; };
 		1E4E059BABFC208A1F068298 /* TPEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9ED1E524F2DF5AD02722C /* TPEButton.swift */; };
 		21611E528065130D7A7337E3 /* TPEComponentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		225F1EE68FAC347F27031C26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634E4AFBBDDE1B5E6F87A061 /* LaunchScreen.storyboard */; };
 		227FDD4DF92E50B946292C6D /* TPELoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC94FBC958C984384AA3A1A4 /* TPELoginSDK.framework */; };
 		24E74843FF507AB2907AB440 /* TPELoginSDK copy 3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BEEF283F76C7F9FF566F3 /* TPELoginSDK copy 3.swift */; };
+		252DE5D99E6B5054EDDD5BA6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137EB515688EC06BF3E8A0B9 /* HTTPMethod.swift */; };
+		28034981AB6ACB5A09E6D7F8 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA19BF402911A4AAFD90826E /* NetworkConfiguration.swift */; };
 		29733389709FF17DA0364711 /* InfoRowMolecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F819DC2DFC7A250D832A9A95 /* InfoRowMolecule.swift */; };
 		2CC842450D18185EAB84C5DF /* ColorsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3C4186A45D3FB015CFB940 /* ColorsCatalogView.swift */; };
 		3049FC244EBE018204C5DCAB /* FormFieldMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD27C9788258CA7717B88C69 /* FormFieldMoleculeView.swift */; };
 		3274C2834C3371F9A13B2449 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8112ED5C74FB3FEFD719E77D /* EmptyStateView.swift */; };
 		32D3492458181CDDA9508405 /* LoginCardMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2F8E87939B4AA6CD1C88D /* LoginCardMoleculeView.swift */; };
-		395A05216AE559ECF28B4CF9 /* TPEHomepageSDK copy 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FB27F8DE73C08F9E84AF9C /* TPEHomepageSDK copy 2.swift */; };
+		34E81AB47CA5BC8C239AD39E /* TPECircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C11BFDF6E67AF8786316F /* TPECircleButton.swift */; };
+		392D3B1F337A32BA7943999B /* TPETransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5268665C9FA90BAA9871DCB8 /* TPETransactionList.swift */; };
+		3E7C0632F46F4581825996A1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52285557188EDD5C3A1B8B /* Endpoint.swift */; };
 		40B6DB99AF65640AC3BBA1B8 /* LoginPageTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A176DE0E4E131976600AE6 /* LoginPageTemplate.swift */; };
 		4101AFBACB566ED7214F9C21 /* InputFieldsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDAB8BEC790F0C39D7D0269 /* InputFieldsCatalogView.swift */; };
+		42060F2554D7BA9591813BC3 /* TPETransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A35B562DA38D5FE83766CD4 /* TPETransactionRow.swift */; };
 		4483F8054C58F1A3F5EDB6D0 /* TPELinkText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4451A3643AA9E247078C5D89 /* TPELinkText.swift */; };
+		4539CFEF26549C14AB06D0C0 /* TPEComponentSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F85CFA34762DB650E81B85 /* TPEComponentSectionHeader.swift */; };
 		4619DE55C6E4856A9BAFF040 /* NavigationItemsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87977F8A425BF577ADB20E7D /* NavigationItemsCatalogView.swift */; };
+		48DA162E60E7499B758DEC80 /* TPEPromoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A7713717652B352463C469 /* TPEPromoSection.swift */; };
 		48E3C5B118212F6EA41FC9F1 /* TPEHomepageSDK copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D786BDB14B1ACC65AF6437 /* TPEHomepageSDK copy.swift */; };
+		49255FFF3487BC9E13B836F8 /* TPEBaseIconUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB47B872D28736A30E579F /* TPEBaseIconUrl.swift */; };
+		4D0A15644D04D3B7C6E6DDBE /* TPEBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1989C05B3784FCAF2DF9DAE /* TPEBadge.swift */; };
+		4DD2C22D8242F4C1E8422DDE /* TPEBaseBalanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4A28C8A4AA887699FC597 /* TPEBaseBalanceCard.swift */; };
 		5410E1E7808633DDDD9FCE49 /* TPETextCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A951C46F195073A3E848FE2 /* TPETextCatalogView.swift */; };
+		54478C8D2E9F5B1F002D7735 /* TpePromoListBannerTw.swift in Sources */ = {isa = PBXBuildFile; fileRef = B431A63344A1DF2BDBCDE0CE /* TpePromoListBannerTw.swift */; };
 		5541FC6AA947C6EB33663709 /* TPEComponentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; };
 		556FB7606EA80B4D67651E7D /* TPEHomepageSDK copy 3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77867DCE7E5E290F2105EB8F /* TPEHomepageSDK copy 3.swift */; };
+		55F00667B22EE030C86BB039 /* TPEHomepageBackgroundTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E593CBA5952F73677232F0CE /* TPEHomepageBackgroundTW.swift */; };
 		5614DFDB0175693324C5B5F1 /* TPEAccountManagementSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D06C2C6A751D9FA8921F82 /* TPEAccountManagementSDK.swift */; };
+		567FE3FD12FAE9DF6BDF58B6 /* TpeTransactionItemTw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C951740F19885149AFDBB /* TpeTransactionItemTw.swift */; };
 		592524B6573405631BFBB2FB /* TPEAccountManagementSDK copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2785EE7D1F82C597D04D0F2 /* TPEAccountManagementSDK copy.swift */; };
+		595F77754CC6307693467AEB /* HomePageDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FF6A9775FF564C1F8F68DA /* HomePageDemo.swift */; };
 		601DE4689D1977260540C54D /* AtomsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3ED9EBE991FEFBCBE8A110 /* AtomsCatalogView.swift */; };
 		62EDAAADD450CD7E7637F8B8 /* TPEText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F559E4551E02E56ADDC8002C /* TPEText.swift */; };
 		63FF68471D1CBD442D9562C9 /* TPEOrganizmLoginTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843447600402CBDF4838F45D /* TPEOrganizmLoginTL.swift */; };
 		683BA60D86C6FA37E8666195 /* LoadingIndicatorMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331854D1963AEDF1AE22910A /* LoadingIndicatorMoleculeView.swift */; };
-		6C71D8C97F6A5107E974E312 /* TpeLinkCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7280CA3AEADE752D4DD8109 /* TpeLinkCatalogView.swift */; };
+		6B0AB28C97F589E7AF2C1339 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5E86AEE5C179E4BFE9B68 /* NetworkService.swift */; };
 		6D76746C6B5C4282B1DC5AC8 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F84978D70FE40A05816EAEC /* ScaleButtonStyle.swift */; };
+		721A318EEBD5AE99C195C71F /* HomePageTemplateCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297480D7DEAE43559F50141 /* HomePageTemplateCatalogView.swift */; };
+		741666668DFFFAFFB9E3EC8A /* TPEBalanceCardTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDB40ADEFCF98DD7884DDF9 /* TPEBalanceCardTW.swift */; };
 		79D0E62B047951BD94A35B96 /* TPELoginSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC94FBC958C984384AA3A1A4 /* TPELoginSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80DE98014CA393292664C19A /* TPEComponentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; };
 		873A717F8B9B0C0ABEA4BDD6 /* FormFieldMolecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE5105F9B27D2ED45AC636 /* FormFieldMolecule.swift */; };
+		8A920E7C7ED7228C4A4264C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7669604A4746794D4623402E /* Assets.xcassets */; };
 		8D6E0A1CF0C4AFA6D2526B02 /* InfoRowMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5F709AF38791C30943EE1A /* InfoRowMoleculeView.swift */; };
+		8DAAC6F8318754D76A82C8B9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D608EF1F59D27BD5D1BE929 /* APIError.swift */; };
 		8F5BBA9D0C09951732130DF4 /* LoginConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E29230A857A8E520137CAFE /* LoginConfig.swift */; };
+		914C62955F0800A7280A60BD /* TpeLinkCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E33A9CE712FED7BBBB08C /* TpeLinkCatalogView.swift */; };
 		91DC4443B287B1A71ADD458F /* StatBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23CB30BA56C06CAA22FD636 /* StatBadge.swift */; };
 		92438C9F71372AB8F365B96C /* StatCardMolecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8381EA4174646A28375D679 /* StatCardMolecule.swift */; };
 		9451527FAC8AE206CDFD2C0B /* LoginCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A53E662D749C6085DA181E /* LoginCard.swift */; };
 		996772DFDC676C304E59B61D /* TPEAccountManagementSDK copy 3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AE97DA82A46553016735C7 /* TPEAccountManagementSDK copy 3.swift */; };
 		9A32F21F5DDEFDDA324E45BE /* TPEComponentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; };
 		9A69F14461B7AC269D1E46C9 /* CardHeaderMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C16FAEB471862BBF89DF2F /* CardHeaderMoleculeView.swift */; };
+		9BD878211D3782BF6BF2B1B6 /* TPEHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ABF9D1A2613ED523FA7F56 /* TPEHeaderComponent.swift */; };
 		9C564DC76ACF71503DBAB722 /* LoginPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C871D923FF5F1747FA9994FC /* LoginPageView.swift */; };
 		9C679EAF14990A13E786F546 /* TPEHomepageSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBFEA6CBB33F4D9F8D8679C /* TPEHomepageSDK.swift */; };
+		9C83EF17E4199441432906E7 /* TPECopyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329FC12F7E6E68240EF4EAFB /* TPECopyButton.swift */; };
+		9E48F29452BFA6714B4E8544 /* TPECountBadgeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1349F1D6F28EC794DFBD2D6D /* TPECountBadgeIcon.swift */; };
+		A0AEDCCF1E34097FBEB5F642 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C17D6FB03CC1EF6BD5F7BDC /* NetworkLogger.swift */; };
+		A0C88BBB46256B9E7CCA666D /* TPEBalanceDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB59380DF57A10B6A2812B1 /* TPEBalanceDisplay.swift */; };
 		A2214B8C0B5BB3169DCCD8C8 /* TPEComponentSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A497C7AD2119204DE6505AA7 /* TPEMenuItemListVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CECC1F2CAFC48B63E36990 /* TPEMenuItemListVertical.swift */; };
 		A59437D8DDBDE5A1723BAD58 /* ButtonGroupMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB4D135A08F80B0BFE3B4A /* ButtonGroupMoleculeView.swift */; };
 		A9847CB632045BE44EDD9396 /* MoleculeCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B0B3B68B7506E5A9D3C575 /* MoleculeCatalogView.swift */; };
+		AAAB4560CCDBD434E22F5202 /* TPEShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A4C30CC8332FB9B93DDB7A /* TPEShapes.swift */; };
 		AB0EEAA6DADDF03F117AA03B /* TPEAccountManagementSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4770F3102FE663C1D8F31956 /* TPEAccountManagementSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ADB7DA2127F238C9666F9F9E /* CheckboxToggleCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0DD1C9479DCF9F6D021AE /* CheckboxToggleCatalogView.swift */; };
 		AFED7C7475922617247186D8 /* CategoryFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC72D37FD5EAEF5B581904F /* CategoryFilter.swift */; };
+		B0C5DED3B22A4E373ADFF04C /* TPEIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D28E03EE0FE5F16277AC87 /* TPEIconButton.swift */; };
 		B419808FCC2724AE0CCE5EC3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7037E9D820C9066EBFFCA83D /* HeaderView.swift */; };
 		B9C68B78FB37CDE25F011F56 /* ButtonGroupMolecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E96199E09160629442BC4 /* ButtonGroupMolecule.swift */; };
 		BBAF70824CE1669DB9460390 /* PropertyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04234C65BADE727BDE08D91 /* PropertyCard.swift */; };
 		BC6A85275278211E06A1F276 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DA1350EEC50D32CF287B8C0E /* Alamofire */; };
+		C757AC0DB54F6F853AF78576 /* TPEHomepageTWType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE360D6123EC7AA9FBD374B1 /* TPEHomepageTWType.swift */; };
 		CB8EE95E57090AA55089FFAE /* TPEHomepageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9A667012BADCC22372EA01 /* TPEHomepageSDK.framework */; };
 		CC3B98D977004D31B13DDE1B /* DesignSystemBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C645836BAABD41B13486BD43 /* DesignSystemBrowser.swift */; };
 		CE687C7EE684F5268EA7B366 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A1A097FCA9948564A3EF37 /* ViewModels.swift */; };
 		D135CB79B090F28AFF3B6ED6 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FB32BE2404AFA313B4990F /* SearchBar.swift */; };
+		D49008CD8688EA1E4B792A0E /* TPETransactionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0711500A7BDDF3AAF2327F82 /* TPETransactionSection.swift */; };
+		D5CECED61CFCEA17B75F11DF /* TPEPromoBannerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963190D0C099C47BB4623597 /* TPEPromoBannerCard.swift */; };
 		D6386FD1A61C5A32BD095B09 /* LoadingIndicatorMolecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC18EEACA9FE1ECFB363FA6 /* LoadingIndicatorMolecule.swift */; };
+		D911183BB6457FF6E0E0BF43 /* TPEPromoBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E419F028A89200508A53D /* TPEPromoBadge.swift */; };
 		DAD7202BC05886EF04EB0149 /* ScaleButtonVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E0F39DD8679C624F5FA953 /* ScaleButtonVIew.swift */; };
+		E1AE828A92C694CF67C0CEBF /* TPEMenuListVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69382347107F791EBDA8F790 /* TPEMenuListVertical.swift */; };
 		E1B997A99472C97375EC4924 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EA3C192AD00832185F85155 /* Assets.xcassets */; };
 		E56A7552A9CBDB3B9DE75F03 /* TPELoginSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE1A78EE6D625C789CA153 /* TPELoginSDK.swift */; };
 		E5D3B4DA055E1270B1416C6A /* TPELoginSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC94FBC958C984384AA3A1A4 /* TPELoginSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8DB053B7E76418272CC3657 /* TPEComponentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; };
 		EF0D20238011D118B42F64D8 /* ComponentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8B153D1D4519B590F7DE19 /* ComponentSection.swift */; };
 		F01B57739CEEB49CA325AB48 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 5AD486EF9800AD6628C17550 /* Algorithms */; };
+		F16A688A9E7B22E80AC0A97A /* TPEEyeToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADD4EC6D4B8DCA48C4FCED /* TPEEyeToggleButton.swift */; };
 		F409B1D065F36E5E6F2023D4 /* StatCardMoleculeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785087DC36D2CE4918B0E1D /* StatCardMoleculeView.swift */; };
 		F622248942707CC81BB60188 /* TPEAccountManagementSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4770F3102FE663C1D8F31956 /* TPEAccountManagementSDK.framework */; };
 		F6856D581BC481620789CF80 /* TPEAccountManagementSDK copy 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A82A23C8F735FD755F599 /* TPEAccountManagementSDK copy 2.swift */; };
 		F7A4C4F506B6E7258A75D36D /* TypographyCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B66D8D37DE3C9D9EFAE8B65 /* TypographyCatalogView.swift */; };
 		F83B90F64C819E79A38079AF /* TPELoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC94FBC958C984384AA3A1A4 /* TPELoginSDK.framework */; };
+		F93AD115F254E622CD7166EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5E17C4F91BBF1C4D252F7DD /* Assets.xcassets */; };
 		FC2B6DB0F9DAA670D1353022 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F302ED22221852862D65DF /* LoginUseCase.swift */; };
 		FC54F2C8B9EC7F412622AB95 /* TPEComponentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */; };
 		FC67661478C81712C489B466 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DF726880C37DCE182ED539 /* App.swift */; };
@@ -194,20 +233,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0711500A7BDDF3AAF2327F82 /* TPETransactionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPETransactionSection.swift; sourceTree = "<group>"; };
 		07D786BDB14B1ACC65AF6437 /* TPEHomepageSDK copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPEHomepageSDK copy.swift"; sourceTree = "<group>"; };
 		09BE5105F9B27D2ED45AC636 /* FormFieldMolecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldMolecule.swift; sourceTree = "<group>"; };
 		0A3ED9EBE991FEFBCBE8A110 /* AtomsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomsCatalogView.swift; sourceTree = "<group>"; };
 		0A6CE9C3106FA5399FE44A7B /* TPEComponentSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPEComponentSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB13EB08C1120AC3769B1EA /* LoginTemplateCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTemplateCatalogView.swift; sourceTree = "<group>"; };
+		0F52285557188EDD5C3A1B8B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		10C16FAEB471862BBF89DF2F /* CardHeaderMoleculeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeaderMoleculeView.swift; sourceTree = "<group>"; };
+		1277BD88299BED6414309AB0 /* TPEBalanceIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEBalanceIndicator.swift; sourceTree = "<group>"; };
+		1349F1D6F28EC794DFBD2D6D /* TPECountBadgeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPECountBadgeIcon.swift; sourceTree = "<group>"; };
+		137EB515688EC06BF3E8A0B9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		166C951740F19885149AFDBB /* TpeTransactionItemTw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpeTransactionItemTw.swift; sourceTree = "<group>"; };
+		1A35B562DA38D5FE83766CD4 /* TPETransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPETransactionRow.swift; sourceTree = "<group>"; };
 		1C6887D41DEC9896C03069F5 /* TPEComponentSDKTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TPEComponentSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D608EF1F59D27BD5D1BE929 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		1F84978D70FE40A05816EAEC /* ScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonStyle.swift; sourceTree = "<group>"; };
 		22A176DE0E4E131976600AE6 /* LoginPageTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageTemplate.swift; sourceTree = "<group>"; };
+		243E33A9CE712FED7BBBB08C /* TpeLinkCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpeLinkCatalogView.swift; sourceTree = "<group>"; };
 		25A53E662D749C6085DA181E /* LoginCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCard.swift; sourceTree = "<group>"; };
 		2B66D8D37DE3C9D9EFAE8B65 /* TypographyCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyCatalogView.swift; sourceTree = "<group>"; };
+		329FC12F7E6E68240EF4EAFB /* TPECopyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPECopyButton.swift; sourceTree = "<group>"; };
 		32EB5BE3F9597FAB5A778E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		331854D1963AEDF1AE22910A /* LoadingIndicatorMoleculeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorMoleculeView.swift; sourceTree = "<group>"; };
 		34F302ED22221852862D65DF /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		35E5E86AEE5C179E4BFE9B68 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3B5F709AF38791C30943EE1A /* InfoRowMoleculeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowMoleculeView.swift; sourceTree = "<group>"; };
 		40E0F39DD8679C624F5FA953 /* ScaleButtonVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonVIew.swift; sourceTree = "<group>"; };
 		4451A3643AA9E247078C5D89 /* TPELinkText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPELinkText.swift; sourceTree = "<group>"; };
@@ -215,54 +265,82 @@
 		45FBE3845D31EE367BEB63C9 /* TPELoginSDKTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TPELoginSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4770F3102FE663C1D8F31956 /* TPEAccountManagementSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPEAccountManagementSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAB4D135A08F80B0BFE3B4A /* ButtonGroupMoleculeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupMoleculeView.swift; sourceTree = "<group>"; };
+		4FB59380DF57A10B6A2812B1 /* TPEBalanceDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEBalanceDisplay.swift; sourceTree = "<group>"; };
 		506EC995E34DD88A3F1F52CE /* OrganismCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganismCatalogView.swift; sourceTree = "<group>"; };
 		50FB32BE2404AFA313B4990F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		5268665C9FA90BAA9871DCB8 /* TPETransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPETransactionList.swift; sourceTree = "<group>"; };
 		528D11D7DD1088728E16C8DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		565E96199E09160629442BC4 /* ButtonGroupMolecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupMolecule.swift; sourceTree = "<group>"; };
 		5B7BEEF283F76C7F9FF566F3 /* TPELoginSDK copy 3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPELoginSDK copy 3.swift"; sourceTree = "<group>"; };
 		5FC18EEACA9FE1ECFB363FA6 /* LoadingIndicatorMolecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorMolecule.swift; sourceTree = "<group>"; };
+		6297480D7DEAE43559F50141 /* HomePageTemplateCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTemplateCatalogView.swift; sourceTree = "<group>"; };
 		634E4AFBBDDE1B5E6F87A061 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		66FF6A9775FF564C1F8F68DA /* HomePageDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageDemo.swift; sourceTree = "<group>"; };
 		67AE97DA82A46553016735C7 /* TPEAccountManagementSDK copy 3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPEAccountManagementSDK copy 3.swift"; sourceTree = "<group>"; };
+		69382347107F791EBDA8F790 /* TPEMenuListVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEMenuListVertical.swift; sourceTree = "<group>"; };
 		6A951C46F195073A3E848FE2 /* TPETextCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPETextCatalogView.swift; sourceTree = "<group>"; };
 		6E29230A857A8E520137CAFE /* LoginConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfig.swift; sourceTree = "<group>"; };
 		6FA0DD1C9479DCF9F6D021AE /* CheckboxToggleCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleCatalogView.swift; sourceTree = "<group>"; };
 		700FD7DD68CFB24213C588F5 /* TPEButtonCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEButtonCatalogView.swift; sourceTree = "<group>"; };
 		7037E9D820C9066EBFFCA83D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		7669604A4746794D4623402E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		76ABF9D1A2613ED523FA7F56 /* TPEHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEHeaderComponent.swift; sourceTree = "<group>"; };
 		77867DCE7E5E290F2105EB8F /* TPEHomepageSDK copy 3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPEHomepageSDK copy 3.swift"; sourceTree = "<group>"; };
+		78F4A28C8A4AA887699FC597 /* TPEBaseBalanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEBaseBalanceCard.swift; sourceTree = "<group>"; };
+		7C17D6FB03CC1EF6BD5F7BDC /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		7DB9CD1FAA1194190E724FBA /* TPEColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEColors.swift; sourceTree = "<group>"; };
 		7F9A667012BADCC22372EA01 /* TPEHomepageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPEHomepageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FDB40ADEFCF98DD7884DDF9 /* TPEBalanceCardTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEBalanceCardTW.swift; sourceTree = "<group>"; };
 		8112ED5C74FB3FEFD719E77D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		83DE1A78EE6D625C789CA153 /* TPELoginSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPELoginSDK.swift; sourceTree = "<group>"; };
 		843447600402CBDF4838F45D /* TPEOrganizmLoginTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEOrganizmLoginTL.swift; sourceTree = "<group>"; };
 		87977F8A425BF577ADB20E7D /* NavigationItemsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemsCatalogView.swift; sourceTree = "<group>"; };
+		88D88F84D18992CE11A93C1D /* TPEPromoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEPromoItem.swift; sourceTree = "<group>"; };
 		91172546060CDD6F45D1063C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		929E419F028A89200508A53D /* TPEPromoBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEPromoBadge.swift; sourceTree = "<group>"; };
+		963190D0C099C47BB4623597 /* TPEPromoBannerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEPromoBannerCard.swift; sourceTree = "<group>"; };
 		97DF726880C37DCE182ED539 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		9BAB47B872D28736A30E579F /* TPEBaseIconUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEBaseIconUrl.swift; sourceTree = "<group>"; };
+		9CADD4EC6D4B8DCA48C4FCED /* TPEEyeToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEEyeToggleButton.swift; sourceTree = "<group>"; };
 		9EA3C192AD00832185F85155 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A04234C65BADE727BDE08D91 /* PropertyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCard.swift; sourceTree = "<group>"; };
+		A17C11BFDF6E67AF8786316F /* TPECircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPECircleButton.swift; sourceTree = "<group>"; };
 		A5AC197C77EBC18EDEEFAF07 /* CardHeaderMolecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHeaderMolecule.swift; sourceTree = "<group>"; };
 		A785087DC36D2CE4918B0E1D /* StatCardMoleculeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCardMoleculeView.swift; sourceTree = "<group>"; };
 		ABBFEA6CBB33F4D9F8D8679C /* TPEHomepageSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEHomepageSDK.swift; sourceTree = "<group>"; };
 		ADDAB8BEC790F0C39D7D0269 /* InputFieldsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldsCatalogView.swift; sourceTree = "<group>"; };
+		AE360D6123EC7AA9FBD374B1 /* TPEHomepageTWType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEHomepageTWType.swift; sourceTree = "<group>"; };
+		B1989C05B3784FCAF2DF9DAE /* TPEBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEBadge.swift; sourceTree = "<group>"; };
 		B23CB30BA56C06CAA22FD636 /* StatBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBadge.swift; sourceTree = "<group>"; };
+		B25199D47C0B02C04AE9669C /* TPEHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEHeaderTitle.swift; sourceTree = "<group>"; };
+		B431A63344A1DF2BDBCDE0CE /* TpePromoListBannerTw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpePromoListBannerTw.swift; sourceTree = "<group>"; };
 		B4A1A097FCA9948564A3EF37 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
-		B4FB27F8DE73C08F9E84AF9C /* TPEHomepageSDK copy 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPEHomepageSDK copy 2.swift"; sourceTree = "<group>"; };
+		B5E17C4F91BBF1C4D252F7DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B6CECC1F2CAFC48B63E36990 /* TPEMenuItemListVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEMenuItemListVertical.swift; sourceTree = "<group>"; };
 		BAB9ED1E524F2DF5AD02722C /* TPEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEButton.swift; sourceTree = "<group>"; };
 		BD3C4186A45D3FB015CFB940 /* ColorsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCatalogView.swift; sourceTree = "<group>"; };
 		C40A82A23C8F735FD755F599 /* TPEAccountManagementSDK copy 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPEAccountManagementSDK copy 2.swift"; sourceTree = "<group>"; };
 		C49E84EB06461EC7FC827EB6 /* ProgressIndicatorsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorsCatalogView.swift; sourceTree = "<group>"; };
 		C4B0B3B68B7506E5A9D3C575 /* MoleculeCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoleculeCatalogView.swift; sourceTree = "<group>"; };
 		C645836BAABD41B13486BD43 /* DesignSystemBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemBrowser.swift; sourceTree = "<group>"; };
-		C7280CA3AEADE752D4DD8109 /* TpeLinkCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpeLinkCatalogView.swift; sourceTree = "<group>"; };
+		C6A4C30CC8332FB9B93DDB7A /* TPEShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEShapes.swift; sourceTree = "<group>"; };
 		C871D923FF5F1747FA9994FC /* LoginPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageView.swift; sourceTree = "<group>"; };
 		CDC72D37FD5EAEF5B581904F /* CategoryFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilter.swift; sourceTree = "<group>"; };
 		D3D06C2C6A751D9FA8921F82 /* TPEAccountManagementSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEAccountManagementSDK.swift; sourceTree = "<group>"; };
+		DA19BF402911A4AAFD90826E /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		DA8B153D1D4519B590F7DE19 /* ComponentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSection.swift; sourceTree = "<group>"; };
 		DE5A6D37CC4E38C8AC4780BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E2D28E03EE0FE5F16277AC87 /* TPEIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEIconButton.swift; sourceTree = "<group>"; };
 		E2EDFFAC2F7F826F933C29C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E593CBA5952F73677232F0CE /* TPEHomepageBackgroundTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEHomepageBackgroundTW.swift; sourceTree = "<group>"; };
 		E73D6B112C0E3EE9F6783500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E799A5DA5A8873F5EF5C1F88 /* TPEComposableApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TPEComposableApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8F85CFA34762DB650E81B85 /* TPEComponentSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEComponentSectionHeader.swift; sourceTree = "<group>"; };
 		F2785EE7D1F82C597D04D0F2 /* TPEAccountManagementSDK copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TPEAccountManagementSDK copy.swift"; sourceTree = "<group>"; };
+		F2A7713717652B352463C469 /* TPEPromoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEPromoSection.swift; sourceTree = "<group>"; };
+		F402FBFF472202C58BF82C54 /* TPEMenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEMenuRow.swift; sourceTree = "<group>"; };
 		F559E4551E02E56ADDC8002C /* TPEText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEText.swift; sourceTree = "<group>"; };
+		F6664F577640183C45C5D523 /* TPENetworkingCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPENetworkingCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F819DC2DFC7A250D832A9A95 /* InfoRowMolecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowMolecule.swift; sourceTree = "<group>"; };
 		F8381EA4174646A28375D679 /* StatCardMolecule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCardMolecule.swift; sourceTree = "<group>"; };
 		FAFBC182F2BF2825E5DACE2F /* TPELoginBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPELoginBottomSheet.swift; sourceTree = "<group>"; };
@@ -284,6 +362,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				227FDD4DF92E50B946292C6D /* TPELoginSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B3C09EEEFA97DCF7EFC6454 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189041D6F381C63A408C1E23 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +452,7 @@
 		0F3EDF5F0581E5BA1B3F8795 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				6297480D7DEAE43559F50141 /* HomePageTemplateCatalogView.swift */,
 				0EB13EB08C1120AC3769B1EA /* LoginTemplateCatalogView.swift */,
 			);
 			path = Templates;
@@ -402,6 +489,20 @@
 			path = Molecule;
 			sourceTree = "<group>";
 		};
+		318503AF729EEC751B10956C /* Organizm */ = {
+			isa = PBXGroup;
+			children = (
+				7FDB40ADEFCF98DD7884DDF9 /* TPEBalanceCardTW.swift */,
+				76ABF9D1A2613ED523FA7F56 /* TPEHeaderComponent.swift */,
+				B6CECC1F2CAFC48B63E36990 /* TPEMenuItemListVertical.swift */,
+				69382347107F791EBDA8F790 /* TPEMenuListVertical.swift */,
+				B431A63344A1DF2BDBCDE0CE /* TpePromoListBannerTw.swift */,
+				F2A7713717652B352463C469 /* TPEPromoSection.swift */,
+				0711500A7BDDF3AAF2327F82 /* TPETransactionSection.swift */,
+			);
+			path = Organizm;
+			sourceTree = "<group>";
+		};
 		31C50C0A033E90E3EF7CB018 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +513,7 @@
 				7F9A667012BADCC22372EA01 /* TPEHomepageSDK.framework */,
 				FC94FBC958C984384AA3A1A4 /* TPELoginSDK.framework */,
 				45FBE3845D31EE367BEB63C9 /* TPELoginSDKTests.xctest */,
+				F6664F577640183C45C5D523 /* TPENetworkingCore.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -420,9 +522,19 @@
 			isa = PBXGroup;
 			children = (
 				1F84978D70FE40A05816EAEC /* ScaleButtonStyle.swift */,
+				B1989C05B3784FCAF2DF9DAE /* TPEBadge.swift */,
+				1277BD88299BED6414309AB0 /* TPEBalanceIndicator.swift */,
+				9BAB47B872D28736A30E579F /* TPEBaseIconUrl.swift */,
 				BAB9ED1E524F2DF5AD02722C /* TPEButton.swift */,
+				A17C11BFDF6E67AF8786316F /* TPECircleButton.swift */,
 				7DB9CD1FAA1194190E724FBA /* TPEColors.swift */,
+				329FC12F7E6E68240EF4EAFB /* TPECopyButton.swift */,
+				1349F1D6F28EC794DFBD2D6D /* TPECountBadgeIcon.swift */,
+				9CADD4EC6D4B8DCA48C4FCED /* TPEEyeToggleButton.swift */,
+				E2D28E03EE0FE5F16277AC87 /* TPEIconButton.swift */,
 				4451A3643AA9E247078C5D89 /* TPELinkText.swift */,
+				929E419F028A89200508A53D /* TPEPromoBadge.swift */,
+				C6A4C30CC8332FB9B93DDB7A /* TPEShapes.swift */,
 				F559E4551E02E56ADDC8002C /* TPEText.swift */,
 			);
 			path = Atoms;
@@ -482,6 +594,17 @@
 			path = TPEComposableApp;
 			sourceTree = "<group>";
 		};
+		5882BF42340E1A20F812CA78 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1D608EF1F59D27BD5D1BE929 /* APIError.swift */,
+				0F52285557188EDD5C3A1B8B /* Endpoint.swift */,
+				137EB515688EC06BF3E8A0B9 /* HTTPMethod.swift */,
+				35E5E86AEE5C179E4BFE9B68 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		588F6E0E47FE18745CC3CD42 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				362847F2E218737DAC13086B /* Atoms */,
+				88F942B824D65E58D78C43A1 /* Models */,
 				F1F55065E3AF29089F7B80FD /* Molecules */,
 			);
 			path = Sources;
@@ -548,11 +672,11 @@
 			children = (
 				0A3ED9EBE991FEFBCBE8A110 /* AtomsCatalogView.swift */,
 				6FA0DD1C9479DCF9F6D021AE /* CheckboxToggleCatalogView.swift */,
-				C7280CA3AEADE752D4DD8109 /* TpeLinkCatalogView.swift */,
 				ADDAB8BEC790F0C39D7D0269 /* InputFieldsCatalogView.swift */,
 				87977F8A425BF577ADB20E7D /* NavigationItemsCatalogView.swift */,
 				C49E84EB06461EC7FC827EB6 /* ProgressIndicatorsCatalogView.swift */,
 				700FD7DD68CFB24213C588F5 /* TPEButtonCatalogView.swift */,
+				243E33A9CE712FED7BBBB08C /* TpeLinkCatalogView.swift */,
 				6A951C46F195073A3E848FE2 /* TPETextCatalogView.swift */,
 			);
 			path = Components;
@@ -564,6 +688,14 @@
 				506EC995E34DD88A3F1F52CE /* OrganismCatalogView.swift */,
 			);
 			path = Organisms;
+			sourceTree = "<group>";
+		};
+		88F942B824D65E58D78C43A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				88D88F84D18992CE11A93C1D /* TPEPromoItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		897FA9F2CF395F6AD45BFDE0 /* Sources */ = {
@@ -610,6 +742,7 @@
 		9999C1D8885E93DCAE14313D /* TPEComponentSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B5E17C4F91BBF1C4D252F7DD /* Assets.xcassets */,
 				E2EDFFAC2F7F826F933C29C8 /* Info.plist */,
 				67042CAD100AC2C1973E2858 /* Sources */,
 			);
@@ -625,6 +758,24 @@
 			path = Organizm;
 			sourceTree = "<group>";
 		};
+		A23B2263D28442ECDB92701B /* TPENetworkingCore */ = {
+			isa = PBXGroup;
+			children = (
+				A33B8770F2A4D9925E7A260D /* Configuration */,
+				FC9DF900DD58FB49B5C3EA54 /* Logging */,
+				5882BF42340E1A20F812CA78 /* Network */,
+			);
+			path = TPENetworkingCore;
+			sourceTree = "<group>";
+		};
+		A33B8770F2A4D9925E7A260D /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				DA19BF402911A4AAFD90826E /* NetworkConfiguration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		A4A65F596EFA2ADE29BFE26C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +787,7 @@
 		A68375E5C3722EAD27309518 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				66FF6A9775FF564C1F8F68DA /* HomePageDemo.swift */,
 				C871D923FF5F1747FA9994FC /* LoginPageView.swift */,
 			);
 			path = Page;
@@ -657,6 +809,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		C394E0CA8BCE7A9A142D2870 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				AE360D6123EC7AA9FBD374B1 /* TPEHomepageTWType.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
 		D123D9A56F686718419B5CC8 /* Template */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +835,7 @@
 				51DD3A9077979D2D6A26E68C /* TPEComposableApp */,
 				F46920FE8A203FFEADFC2DF0 /* TPEHomepageSDK */,
 				FFD26D91093DEC1F1E7E6C61 /* TPELoginSDK */,
+				A23B2263D28442ECDB92701B /* TPENetworkingCore */,
 				31C50C0A033E90E3EF7CB018 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -689,6 +850,16 @@
 				5FC18EEACA9FE1ECFB363FA6 /* LoadingIndicatorMolecule.swift */,
 				25A53E662D749C6085DA181E /* LoginCard.swift */,
 				F8381EA4174646A28375D679 /* StatCardMolecule.swift */,
+				4FB59380DF57A10B6A2812B1 /* TPEBalanceDisplay.swift */,
+				78F4A28C8A4AA887699FC597 /* TPEBaseBalanceCard.swift */,
+				E8F85CFA34762DB650E81B85 /* TPEComponentSectionHeader.swift */,
+				B25199D47C0B02C04AE9669C /* TPEHeaderTitle.swift */,
+				E593CBA5952F73677232F0CE /* TPEHomepageBackgroundTW.swift */,
+				F402FBFF472202C58BF82C54 /* TPEMenuRow.swift */,
+				963190D0C099C47BB4623597 /* TPEPromoBannerCard.swift */,
+				166C951740F19885149AFDBB /* TpeTransactionItemTw.swift */,
+				5268665C9FA90BAA9871DCB8 /* TPETransactionList.swift */,
+				1A35B562DA38D5FE83766CD4 /* TPETransactionRow.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -696,10 +867,19 @@
 		F46920FE8A203FFEADFC2DF0 /* TPEHomepageSDK */ = {
 			isa = PBXGroup;
 			children = (
+				7669604A4746794D4623402E /* Assets.xcassets */,
 				32EB5BE3F9597FAB5A778E97 /* Info.plist */,
 				064145BD3CA5B8FCA720B72B /* Sources */,
 			);
 			path = TPEHomepageSDK;
+			sourceTree = "<group>";
+		};
+		FC9DF900DD58FB49B5C3EA54 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				7C17D6FB03CC1EF6BD5F7BDC /* NetworkLogger.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		FD5CF2FBB0D1530267FBB21B /* Domain */ = {
@@ -713,7 +893,8 @@
 		FD778B1DB8D4F9C6759C0FBA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B4FB27F8DE73C08F9E84AF9C /* TPEHomepageSDK copy 2.swift */,
+				318503AF729EEC751B10956C /* Organizm */,
+				C394E0CA8BCE7A9A142D2870 /* Templates */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -731,6 +912,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0E83DCC4405F0E8CFEF959C0 /* TPENetworkingCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0958E56FEAFBB646A4E72FD9 /* Build configuration list for PBXNativeTarget "TPENetworkingCore" */;
+			buildPhases = (
+				DD447793827773AB88ED79A2 /* Sources */,
+				6B3C09EEEFA97DCF7EFC6454 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TPENetworkingCore;
+			packageProductDependencies = (
+				DA11C4A83220D8616663EDBC /* Alamofire */,
+			);
+			productName = TPENetworkingCore;
+			productReference = F6664F577640183C45C5D523 /* TPENetworkingCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		41625C1F2F60835266C54E41 /* TPELoginSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22CFD248D0D9D9DBBADA32EA /* Build configuration list for PBXNativeTarget "TPELoginSDK" */;
@@ -756,6 +956,7 @@
 			buildConfigurationList = 308EDE2422BAA476F4CBD82A /* Build configuration list for PBXNativeTarget "TPEHomepageSDK" */;
 			buildPhases = (
 				449812702ABFF9BC60D26A51 /* Sources */,
+				07A309622A594FE1445F9FA3 /* Resources */,
 				AA33C98DD14F7411F5346E01 /* Frameworks */,
 			);
 			buildRules = (
@@ -795,6 +996,7 @@
 			buildConfigurationList = ACF48C6C2BE82A9C734105AA /* Build configuration list for PBXNativeTarget "TPEComponentSDK" */;
 			buildPhases = (
 				E8543DAC5E99B64279EEA380 /* Sources */,
+				1E178A650F45A5C10C9C4B3A /* Resources */,
 				AEF69DDD1A644D231228DA22 /* Frameworks */,
 			);
 			buildRules = (
@@ -882,6 +1084,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					0E83DCC4405F0E8CFEF959C0 = {
+						DevelopmentTeam = 43F85566S2;
+						ProvisioningStyle = Automatic;
+					};
 					41625C1F2F60835266C54E41 = {
 						DevelopmentTeam = 43F85566S2;
 						ProvisioningStyle = Automatic;
@@ -936,6 +1142,7 @@
 				4F84EDEDB0E06A1AD37CB639 /* TPEHomepageSDK */,
 				41625C1F2F60835266C54E41 /* TPELoginSDK */,
 				B0D1FC06C24B128E57057D55 /* TPELoginSDKTests */,
+				0E83DCC4405F0E8CFEF959C0 /* TPENetworkingCore */,
 			);
 		};
 /* End PBXProject section */
@@ -947,6 +1154,22 @@
 			files = (
 				E1B997A99472C97375EC4924 /* Assets.xcassets in Resources */,
 				225F1EE68FAC347F27031C26 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07A309622A594FE1445F9FA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A920E7C7ED7228C4A4264C0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E178A650F45A5C10C9C4B3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F93AD115F254E622CD7166EF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,10 +1188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				395A05216AE559ECF28B4CF9 /* TPEHomepageSDK copy 2.swift in Sources */,
+				741666668DFFFAFFB9E3EC8A /* TPEBalanceCardTW.swift in Sources */,
+				9BD878211D3782BF6BF2B1B6 /* TPEHeaderComponent.swift in Sources */,
 				556FB7606EA80B4D67651E7D /* TPEHomepageSDK copy 3.swift in Sources */,
+				54478C8D2E9F5B1F002D7735 /* TpePromoListBannerTw.swift in Sources */,
 				48E3C5B118212F6EA41FC9F1 /* TPEHomepageSDK copy.swift in Sources */,
 				9C679EAF14990A13E786F546 /* TPEHomepageSDK.swift in Sources */,
+				C757AC0DB54F6F853AF78576 /* TPEHomepageTWType.swift in Sources */,
+				A497C7AD2119204DE6505AA7 /* TPEMenuItemListVertical.swift in Sources */,
+				E1AE828A92C694CF67C0CEBF /* TPEMenuListVertical.swift in Sources */,
+				48DA162E60E7499B758DEC80 /* TPEPromoSection.swift in Sources */,
+				D49008CD8688EA1E4B792A0E /* TPETransactionSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,7 +1243,8 @@
 				3274C2834C3371F9A13B2449 /* EmptyStateView.swift in Sources */,
 				3049FC244EBE018204C5DCAB /* FormFieldMoleculeView.swift in Sources */,
 				B419808FCC2724AE0CCE5EC3 /* HeaderView.swift in Sources */,
-				6C71D8C97F6A5107E974E312 /* TpeLinkCatalogView.swift in Sources */,
+				595F77754CC6307693467AEB /* HomePageDemo.swift in Sources */,
+				721A318EEBD5AE99C195C71F /* HomePageTemplateCatalogView.swift in Sources */,
 				8D6E0A1CF0C4AFA6D2526B02 /* InfoRowMoleculeView.swift in Sources */,
 				4101AFBACB566ED7214F9C21 /* InputFieldsCatalogView.swift in Sources */,
 				683BA60D86C6FA37E8666195 /* LoadingIndicatorMoleculeView.swift in Sources */,
@@ -1031,6 +1262,7 @@
 				F409B1D065F36E5E6F2023D4 /* StatCardMoleculeView.swift in Sources */,
 				0ACC0AEA8732E5C230EC6556 /* TPEButtonCatalogView.swift in Sources */,
 				5410E1E7808633DDDD9FCE49 /* TPETextCatalogView.swift in Sources */,
+				914C62955F0800A7280A60BD /* TpeLinkCatalogView.swift in Sources */,
 				F7A4C4F506B6E7258A75D36D /* TypographyCatalogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1050,6 +1282,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD447793827773AB88ED79A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DAAC6F8318754D76A82C8B9 /* APIError.swift in Sources */,
+				3E7C0632F46F4581825996A1 /* Endpoint.swift in Sources */,
+				252DE5D99E6B5054EDDD5BA6 /* HTTPMethod.swift in Sources */,
+				28034981AB6ACB5A09E6D7F8 /* NetworkConfiguration.swift in Sources */,
+				A0AEDCCF1E34097FBEB5F642 /* NetworkLogger.swift in Sources */,
+				6B0AB28C97F589E7AF2C1339 /* NetworkService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8543DAC5E99B64279EEA380 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1062,10 +1307,31 @@
 				9451527FAC8AE206CDFD2C0B /* LoginCard.swift in Sources */,
 				6D76746C6B5C4282B1DC5AC8 /* ScaleButtonStyle.swift in Sources */,
 				92438C9F71372AB8F365B96C /* StatCardMolecule.swift in Sources */,
+				4D0A15644D04D3B7C6E6DDBE /* TPEBadge.swift in Sources */,
+				A0C88BBB46256B9E7CCA666D /* TPEBalanceDisplay.swift in Sources */,
+				1261BAD97E4B433A9C1CA029 /* TPEBalanceIndicator.swift in Sources */,
+				4DD2C22D8242F4C1E8422DDE /* TPEBaseBalanceCard.swift in Sources */,
+				49255FFF3487BC9E13B836F8 /* TPEBaseIconUrl.swift in Sources */,
 				1E4E059BABFC208A1F068298 /* TPEButton.swift in Sources */,
+				34E81AB47CA5BC8C239AD39E /* TPECircleButton.swift in Sources */,
 				055F74B76E4CCC5B7978EC1C /* TPEColors.swift in Sources */,
+				4539CFEF26549C14AB06D0C0 /* TPEComponentSectionHeader.swift in Sources */,
+				9C83EF17E4199441432906E7 /* TPECopyButton.swift in Sources */,
+				9E48F29452BFA6714B4E8544 /* TPECountBadgeIcon.swift in Sources */,
+				F16A688A9E7B22E80AC0A97A /* TPEEyeToggleButton.swift in Sources */,
+				1DCDCA7D4C45DD12EBCE1DCD /* TPEHeaderTitle.swift in Sources */,
+				55F00667B22EE030C86BB039 /* TPEHomepageBackgroundTW.swift in Sources */,
+				B0C5DED3B22A4E373ADFF04C /* TPEIconButton.swift in Sources */,
 				4483F8054C58F1A3F5EDB6D0 /* TPELinkText.swift in Sources */,
+				06462BEC35BB772EE689ACB4 /* TPEMenuRow.swift in Sources */,
+				D911183BB6457FF6E0E0BF43 /* TPEPromoBadge.swift in Sources */,
+				D5CECED61CFCEA17B75F11DF /* TPEPromoBannerCard.swift in Sources */,
+				036ED2D6B6A4FAD72D58EE7B /* TPEPromoItem.swift in Sources */,
+				AAAB4560CCDBD434E22F5202 /* TPEShapes.swift in Sources */,
 				62EDAAADD450CD7E7637F8B8 /* TPEText.swift in Sources */,
+				392D3B1F337A32BA7943999B /* TPETransactionList.swift in Sources */,
+				42060F2554D7BA9591813BC3 /* TPETransactionRow.swift in Sources */,
+				567FE3FD12FAE9DF6BDF58B6 /* TpeTransactionItemTw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1151,6 +1417,29 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Production;
+		};
+		0F60BF9074CA7CB2C1BA7C1B /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tpe.composable.networkingcore.staging;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Staging;
 		};
 		12385C830A38247D5931BA00 /* Production */ = {
 			isa = XCBuildConfiguration;
@@ -1354,6 +1643,29 @@
 			};
 			name = Production;
 		};
+		56B8EEEF550FB66867A246FE /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tpe.composable.networkingcore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Production;
+		};
 		6000508FA28A77D6F716538E /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1394,6 +1706,29 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Staging;
+		};
+		6AB573752A79FEA26F19ABA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tpe.composable.networkingcore.dev;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
 		};
 		7B6F11F8F984509104E6213A /* Staging */ = {
 			isa = XCBuildConfiguration;
@@ -1752,6 +2087,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		0958E56FEAFBB646A4E72FD9 /* Build configuration list for PBXNativeTarget "TPENetworkingCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AB573752A79FEA26F19ABA5 /* Debug */,
+				56B8EEEF550FB66867A246FE /* Production */,
+				0F60BF9074CA7CB2C1BA7C1B /* Staging */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		22CFD248D0D9D9DBBADA32EA /* Build configuration list for PBXNativeTarget "TPELoginSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1848,6 +2193,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 007EC2CD0F66B7CEB1480D7A /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		DA11C4A83220D8616663EDBC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D792336DF454583C6EDAE7C3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		DA1350EEC50D32CF287B8C0E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

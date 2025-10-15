@@ -137,7 +137,7 @@ public struct TPEButton: View {
         
         switch variant {
         case .primary:
-            return TPEColors.blue70
+            return TPEColors.primaryBlue
         case .secondary:
             return Color(.systemGray5)
         case .outline:
@@ -171,7 +171,7 @@ public struct TPEButton: View {
         case .secondary:
             return .primary
         case .outline:
-            return TPEColors.blue70
+            return TPEColors.primaryBlue
         }
     }
     
@@ -186,7 +186,7 @@ public struct TPEButton: View {
         
         switch variant {
         case .outline:
-            return TPEColors.blue70
+            return TPEColors.primaryBlue
         case .danger:
             return .red
         case .success:

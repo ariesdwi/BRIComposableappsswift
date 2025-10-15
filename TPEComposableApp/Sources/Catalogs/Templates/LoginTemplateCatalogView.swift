@@ -65,7 +65,7 @@ struct LoginTemplateCatalogView: View {
         var subtitle: String = "BRImo Timor-Leste is your go-to solution for hassle-free banking. Make your transaction always simple, always accessible."
         var buttonText: String = "Login"
         var showRegisterLink: Bool = true
-        var backgroundColor: Color = TPEColors.blue70
+        var backgroundColor: Color = TPEColors.primaryBlue
     }
     
     var body: some View {
