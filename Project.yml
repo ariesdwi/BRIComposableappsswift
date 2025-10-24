@@ -17,8 +17,7 @@ packages:
 
 configs:
   Debug: debug
-  Staging: release
-  Production: release
+  Release: release
 
 settings:
   base:
@@ -49,12 +48,12 @@ targets:
       - target: TPELoginSDK
       - target: TPEHomepageSDK
       - target: TPEAccountManagementSDK
+      - target: TPENetworkingCore
       - package: Algorithms
     settings:
       configs:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app.dev}
-        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app.staging}
-        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app}
+        Release: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.app}
 
   # MARK: - Component SDK (Atomic Design)
   TPEComponentSDK:
@@ -71,10 +70,9 @@ targets:
     settings:
       configs:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk.dev}
-        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk.staging}
-        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk}
+        Release: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.componentsdk}
 
-  # MARK: - Login SDK (Clean Architecture)
+  # MARK: - Login SDK
   TPELoginSDK:
     type: framework
     platform: iOS
@@ -89,10 +87,9 @@ targets:
     settings:
       configs:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk.dev}
-        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk.staging}
-        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk}
+        Release: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.loginsdk}
 
-  # MARK: - Homepage SDK (Clean Architecture)
+  # MARK: - Homepage SDK
   TPEHomepageSDK:
     type: framework
     platform: iOS
@@ -107,10 +104,9 @@ targets:
     settings:
       configs:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk.dev}
-        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk.staging}
-        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk}
+        Release: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.homepagesdk}
 
-  # MARK: - Account Management SDK (Clean Architecture)
+  # MARK: - Account Management SDK
   TPEAccountManagementSDK:
     type: framework
     platform: iOS
@@ -123,10 +119,9 @@ targets:
     settings:
       configs:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk.dev}
-        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk.staging}
-        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk}
-        
-# MARK: - Networking Core SDK
+        Release: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.accountmanagementsdk}
+
+  # MARK: - Networking Core SDK
   TPENetworkingCore:
     type: framework
     platform: iOS
@@ -139,12 +134,9 @@ targets:
     settings:
       configs:
         Debug: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore.dev}
-        Staging: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore.staging}
-        Production: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore}
+        Release: {PRODUCT_BUNDLE_IDENTIFIER: com.tpe.composable.networkingcore}
 
-  
-
-# MARK: - Test Targets
+  # MARK: - Unit Tests
   TPEComponentSDKTests:
     type: bundle.unit-test
     platform: iOS
@@ -162,7 +154,6 @@ targets:
     platform: iOS
     deploymentTarget: "16.0"
     sources: 
-     
       - path: TPELoginSDK/Tests
     dependencies:
       - target: TPELoginSDK
@@ -172,39 +163,26 @@ targets:
 
 # MARK: - Schemes
 schemes:
-  TPEComposable-Dev:
+  # MARK: - DemoApp Scheme
+  TPEComposable-DemoApp:
     build:
       targets:
         TPEComposableApp: all
     run:
       config: Debug
-    test:
-      config: Debug
-      targets:
-        - TPEComponentSDKTests
-        - TPELoginSDKTests
+      environmentVariables:
+        DEMO_APP: YES
     archive:
-      config: Debug
+      config: Release
 
-  TPEComposable-Staging:
+  # MARK: - DesignSystem Scheme
+  TPEComposable-DesignSystem:
     build:
       targets:
         TPEComposableApp: all
     run:
-      config: Staging
-    test:
-      config: Staging
+      config: Debug
+      environmentVariables:
+        DESIGN_SYSTEM: YES
     archive:
-      config: Staging
-
-  TPEComposable-Prod:
-    build:
-      targets:
-        TPEComposableApp: all
-    run:
-      config: Production
-    test:
-      config: Production
-    archive:
-      config: Production
-
+      config: Release

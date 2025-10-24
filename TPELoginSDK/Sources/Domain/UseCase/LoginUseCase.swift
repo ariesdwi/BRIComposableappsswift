@@ -1,9 +1,3 @@
-//
-//  UseCases.swift
-//  TPEComposable
-//
-//  Created by PT Siaga Abdi Utama on 06/10/25.
-//
 import Foundation
 
 public protocol LoginUseCase {
@@ -28,3 +22,5 @@ public class DefaultLoginUseCase: LoginUseCase {
         }
     }
 }
+
+

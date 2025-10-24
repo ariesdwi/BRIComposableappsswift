@@ -10,703 +10,279 @@ import TPELoginSDK
 import TPEComponentSDK
 
 struct OrganismCatalogView: View {
-    @State private var selectedLoginVariant: LoginVariant = .default
-    @State private var showLiveDemo: Bool = false
-    @State private var customizationSettings = LoginCustomizationSettings()
-    @State private var isLoggedIn: Bool = false
+    @State private var searchText: String = ""
+    @State private var selectedCategory: OrganismCategory = .all
     
-    enum LoginVariant: String, CaseIterable, Identifiable {
-        case `default` = "Default"
-        case withBackground = "With Background"
-        case tallCard = "Tall Card"
-        case compact = "Compact"
-        case minimal = "Minimal"
-        case branded = "Branded"
+    enum OrganismCategory: String, CaseIterable, Identifiable, FilterCategory {
+        case all = "All"
+        case authentication = "Authentication"
+        case navigation = "Navigation"
+        case dataDisplay = "Data Display"
+        case feedback = "Feedback"
+        case layout = "Layout"
         
         var id: String { rawValue }
-        
-        var config: LoginConfig {
-            switch self {
-            case .default:
-                return LoginConfig(
-                    title: "Welcome to TPE",
-                    subtitle: "Sign in to access your account and manage your profile",
-                    loginText: "Sign In"
-                )
-            case .withBackground:
-                return LoginConfig(
-                    backgroundUrl: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80",
-                    title: "Welcome Back",
-                    subtitle: "Continue your journey with our platform",
-                    loginText: "Continue"
-                )
-            case .tallCard:
-                return LoginConfig(
-                    title: "Get Started",
-                    subtitle: "Join thousands of users already using our services to enhance their productivity",
-                    loginText: "Create Account"
-                )
-            case .compact:
-                return LoginConfig(
-                    title: "Sign In",
-                    subtitle: "Access your dashboard",
-                    loginText: "Login"
-                )
-            case .minimal:
-                return LoginConfig(
-                    title: "TPE",
-                    subtitle: "Enterprise Design System",
-                    loginText: "Get Started"
-                )
-            case .branded:
-                return LoginConfig(
-                    backgroundUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
-                    title: "Enterprise Portal",
-                    subtitle: "Secure access to your organization's resources",
-                    loginText: "Access Portal"
-                )
-            }
-        }
-        
-        var cardHeight: CGFloat {
-            switch self {
-            case .default: return 320
-            case .withBackground: return 350
-            case .tallCard: return 420
-            case .compact: return 280
-            case .minimal: return 240
-            case .branded: return 380
-            }
-        }
+        var title: String { rawValue }
         
         var icon: String {
             switch self {
-            case .default: return "rectangle.fill"
-            case .withBackground: return "photo.fill"
-            case .tallCard: return "rectangle.portrait.fill"
-            case .compact: return "rectangle.compress.vertical"
-            case .minimal: return "minus"
-            case .branded: return "building.2.fill"
-            }
-        }
-        
-        var description: String {
-            switch self {
-            case .default: return "Standard layout with balanced spacing"
-            case .withBackground: return "Full background image with overlay card"
-            case .tallCard: return "Extended height for more content space"
-            case .compact: return "Minimal layout for quick authentication"
-            case .minimal: return "Ultra clean and simple design"
-            case .branded: return "Corporate branding with professional imagery"
-            }
-        }
-        
-        var complexity: String {
-            switch self {
-            case .default, .compact, .minimal: return "Simple"
-            case .withBackground, .branded: return "Medium"
-            case .tallCard: return "Complex"
+            case .all: return "square.grid.2x2"
+            case .authentication: return "person.crop.circle"
+            case .navigation: return "arrow.triangle.turn.up.right.diamond"
+            case .dataDisplay: return "list.bullet.rectangle"
+            case .feedback: return "exclamationmark.bubble"
+            case .layout: return "rectangle.split.3x3"
             }
         }
     }
     
-    struct LoginCustomizationSettings {
-        var cardHeight: CGFloat = 320
-        var showBackgroundImage: Bool = true
-        var title: String = "Welcome to TPE"
-        var subtitle: String = "Sign in to access your account"
-        var buttonText: String = "Sign In"
-        var backgroundColor: Color = TPEColors.primaryBlue
-        var showRegisterLink: Bool = true
+    // MARK: - Easy to Update Organism List
+    private let organisms: [OrganismItem] = [
+        // Authentication Category
+        .loginOrganism,
+        .loginBottomSheet,
+        .balanceCard,
+        .headerComponent,
+        .menuListVertical,
+        .transactionSection,
+        .promoSection
+    ]
+    
+    var filteredOrganisms: [OrganismItem] {
+        let categoryFiltered = selectedCategory == .all ? organisms : organisms.filter { $0.category == selectedCategory }
+        
+        if searchText.isEmpty {
+            return categoryFiltered
+        } else {
+            return categoryFiltered.filter {
+                $0.title.localizedCaseInsensitiveContains(searchText) ||
+                $0.subtitle.localizedCaseInsensitiveContains(searchText)
+            }
+        }
     }
     
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 24) {
                 HeaderView(
-                    title: "Login Organism",
-                    subtitle: "Complete authentication templates built with Atomic Design principles"
+                    title: "Organisms",
+                    subtitle: "Complex components built from atoms and molecules"
                 )
                 
-                // Variant Selector
-                VStack(alignment: .leading, spacing: 16) {
-                    HStack {
-                        Text("Template Variants")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.primary)
-                        
-                        Spacer()
-                        
-                        Text("\(LoginVariant.allCases.count) variants")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color.blue.opacity(0.1))
-                            .cornerRadius(6)
-                    }
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
-                            ForEach(LoginVariant.allCases) { variant in
-                                LoginVariantCard(
-                                    variant: variant,
-                                    isSelected: selectedLoginVariant == variant
-                                ) {
-                                    withAnimation(.spring(response: 0.3)) {
-                                        selectedLoginVariant = variant
-                                        updateCustomizationSettings(for: variant)
-                                    }
-                                }
-                            }
+                // Search Bar
+                SearchBar(text: $searchText, placeholder: "Search organisms...")
+                
+                // Category Filter
+                CategoryFilter(
+                    selectedCategory: $selectedCategory,
+                    categories: OrganismCategory.allCases
+                )
+                
+                // Organisms Grid
+                if filteredOrganisms.isEmpty {
+                    EmptyStateView.noResults(query: searchText.isEmpty ? nil : searchText)
+                } else {
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.flexible()),
+                            GridItem(.flexible())
+                        ],
+                        spacing: 16
+                    ) {
+                        ForEach(filteredOrganisms) { organism in
+                            OrganismCard(item: organism)
                         }
-                        .padding(.horizontal, 2)
                     }
                 }
-                
-                // Interactive Preview
-                VStack(alignment: .leading, spacing: 16) {
-                    HStack {
-                        Text("Interactive Preview")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.primary)
-                        
-                        Spacer()
-                        
-                        Button(action: { showLiveDemo = true }) {
-                            HStack(spacing: 6) {
-                                Image(systemName: "play.fill")
-                                Text("Full Screen Demo")
-                            }
-                            .font(.system(size: 14, weight: .medium))
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.small)
-                    }
-                    
-                    previewContainer
-                }
-                
-                // Customization Panel
-                customizationPanel
-                
-                // Usage Guidelines
-                usageGuidelines
-                
-                // Code Integration
-                codeIntegrationSection
             }
             .padding()
         }
         .background(Color(.systemGroupedBackground))
-        .navigationTitle("Login Organism")
+        .navigationTitle("Organisms")
         .navigationBarTitleDisplayMode(.large)
-        .fullScreenCover(isPresented: $showLiveDemo) {
-            LiveLoginDemo(
-                variant: selectedLoginVariant,
-                settings: customizationSettings
-            )
-        }
-    }
-    
-    // MARK: - Preview Container
-    private var previewContainer: some View {
-        ZStack {
-            // Preview with interactive overlay
-            TPEOrganizmLoginTL(
-                config: selectedLoginVariant.config,
-                cardHeight: selectedLoginVariant.cardHeight,
-                onLoginSuccess: {
-                    withAnimation(.spring()) {
-                        isLoggedIn = true
-                    }
-                    
-                    // Reset after 2 seconds
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(.spring()) {
-                            isLoggedIn = false
-                        }
-                    }
-                },
-                onRegisterSuccess: {
-                    // Handle registration
-                    print("Registration flow initiated")
-                }
-            )
-            .frame(height: 500)
-            .cornerRadius(16)
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-            )
-            
-            // Success overlay
-            if isLoggedIn {
-                SuccessOverlay()
-            }
-            
-            // Preview indicator
-            VStack {
-                HStack {
-                    Text("LIVE PREVIEW")
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.green)
-                        .cornerRadius(4)
-                    Spacer()
-                }
-                .padding(12)
-                Spacer()
-            }
-        }
-    }
-    
-    // MARK: - Customization Panel
-    private var customizationPanel: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                Image(systemName: "slider.horizontal.3")
-                    .foregroundColor(.blue)
-                
-                Text("Customization Options")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                
-                Spacer()
-                
-                Button("Reset") {
-                    withAnimation {
-                        customizationSettings = LoginCustomizationSettings()
-                        updateCustomizationSettings(for: selectedLoginVariant)
-                    }
-                }
-                .font(.caption)
-                .foregroundColor(.red)
-            }
-            
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 16) {
-                CustomizationCard(
-                    icon: "textformat",
-                    title: "Content",
-                    description: "Text and labels"
-                ) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        CustomTextField("Title", text: $customizationSettings.title)
-                        CustomTextField("Subtitle", text: $customizationSettings.subtitle)
-                        CustomTextField("Button Text", text: $customizationSettings.buttonText)
-                    }
-                }
-                
-                CustomizationCard(
-                    icon: "paintbrush",
-                    title: "Appearance",
-                    description: "Visual styling"
-                ) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Toggle("Background Image", isOn: $customizationSettings.showBackgroundImage)
-                        
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Card Height: \(Int(customizationSettings.cardHeight))pt")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                            
-                            Slider(
-                                value: $customizationSettings.cardHeight,
-                                in: 240...500,
-                                step: 20
-                            )
-                        }
-                        
-                        Toggle("Show Register Link", isOn: $customizationSettings.showRegisterLink)
-                    }
-                }
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-    }
-    
-    // MARK: - Usage Guidelines
-    private var usageGuidelines: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Image(systemName: "book.fill")
-                    .foregroundColor(.blue)
-                
-                Text("Usage Guidelines")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                
-                Spacer()
-            }
-            
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 12) {
-                GuidelineCard(
-                    icon: "1.circle.fill",
-                    title: "Implementation",
-                    description: "Import TPELoginSDK and use TPEOrganizmLoginTL"
-                )
-                
-                GuidelineCard(
-                    icon: "2.circle.fill",
-                    title: "Customization",
-                    description: "Modify LoginConfig for different variants"
-                )
-                
-                GuidelineCard(
-                    icon: "3.circle.fill",
-                    title: "Handlers",
-                    description: "Implement onLoginSuccess and onRegisterSuccess"
-                )
-                
-                GuidelineCard(
-                    icon: "4.circle.fill",
-                    title: "Integration",
-                    description: "Works with any SwiftUI navigation pattern"
-                )
-            }
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-    }
-    
-    // MARK: - Code Integration
-    private var codeIntegrationSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Image(systemName: "curlybraces")
-                    .foregroundColor(.blue)
-                
-                Text("Code Integration")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                
-                Spacer()
-                
-                Button("Copy") {
-                    // Copy code to clipboard
-                    UIPasteboard.general.string = codeSnippet
-                }
-                .font(.caption)
-                .buttonStyle(.bordered)
-                .controlSize(.small)
-            }
-            
-            CodeBlock(code: codeSnippet)
-                .frame(height: 200)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-    }
-    
-    private var codeSnippet: String {
-        """
-import SwiftUI
-import TPELoginSDK
-
-struct ContentView: View {
-    @State private var showLogin = false
-    
-    var body: some View {
-        Button("Show Login") {
-            showLogin = true
-        }
-        .fullScreenCover(isPresented: $showLogin) {
-            TPEOrganizmLoginTL(
-                config: LoginConfig(
-                    backgroundUrl: "\(selectedLoginVariant.config.backgroundUrl ?? "nil")",
-                    title: "\(customizationSettings.title)",
-                    subtitle: "\(customizationSettings.subtitle)",
-                    loginText: "\(customizationSettings.buttonText)"
-                ),
-                cardHeight: \(Int(customizationSettings.cardHeight)),
-                onLoginSuccess: {
-                    // Handle successful login
-                    showLogin = false
-                },
-                onRegisterSuccess: {
-                    // Handle registration flow
-                }
-            )
-        }
-    }
-}
-"""
-    }
-    
-    // MARK: - Helper Methods
-    private func updateCustomizationSettings(for variant: LoginVariant) {
-        customizationSettings.cardHeight = variant.cardHeight
-        customizationSettings.title = variant.config.title
-        customizationSettings.subtitle = variant.config.subtitle
-        customizationSettings.buttonText = variant.config.loginText
-        customizationSettings.showBackgroundImage = variant.config.backgroundUrl != nil
     }
 }
 
-// MARK: - Supporting Views
+// MARK: - Organism Item Model with Static Properties
 
-struct LoginVariantCard: View {
-    let variant: OrganismCatalogView.LoginVariant
-    let isSelected: Bool
-    let action: () -> Void
+struct OrganismItem: Identifiable {
+    let id = UUID()
+    let title: String
+    let subtitle: String
+    let icon: String
+    let category: OrganismCatalogView.OrganismCategory
+    let destination: OrganismDestination
+    
+    // MARK: - Predefined Organisms - Easy to Add New Ones
+    
+    // Authentication
+    static let loginOrganism = OrganismItem(
+        title: "Login Organism",
+        subtitle: "Complete authentication templates with variants",
+        icon: "person.crop.circle",
+        category: .authentication,
+        destination: .loginOrganism
+    )
+    
+    static let loginBottomSheet = OrganismItem(
+        title: "Login Bottom Sheet",
+        subtitle: "Modal login forms with validation",
+        icon: "rectangle.portrait.bottomthird.inset.filled",
+        category: .authentication,
+        destination: .loginBottomSheet
+    )
+    
+    // Data Display
+    static let balanceCard = OrganismItem(
+        title: "Balance Card",
+        subtitle: "Taiwan-style balance card with toggle",
+        icon: "creditcard.fill",
+        category: .dataDisplay,
+        destination: .balanceCard
+    )
+    
+    static let headerComponent = OrganismItem(
+        title: "Header Component",
+        subtitle: "Customizable header with user greeting",
+        icon: "rectangle.topthird.inset.filled",
+        category: .navigation,
+        destination: .headerComponent
+    )
+    
+    static let menuListVertical = OrganismItem(
+        title: "Vertical Menu List",
+        subtitle: "Horizontally scrolling vertical menu items",
+        icon: "square.grid.3x2",
+        category: .navigation,
+        destination: .menuListVertical
+    )
+    
+    // In OrganismItem struct
+    static let transactionSection = OrganismItem(
+        title: "Transaction Section",
+        subtitle: "Transaction lists with headers and empty states",
+        icon: "list.bullet.rectangle",
+        category: .dataDisplay,
+        destination: .transactionSection
+    )
+    
+    static let promoSection = OrganismItem(
+        title: "Promo Section",
+        subtitle: "Promotional banners with section headers",
+        icon: "tag.fill",
+        category: .dataDisplay,
+        destination: .promoSection
+    )
+
+
+   
+    
+    // MARK: - Destination Enum
+    enum OrganismDestination {
+        case loginOrganism
+        case loginBottomSheet
+        case balanceCard
+        case headerComponent
+        case menuListVertical
+        case transactionSection
+        case promoSection
+        
+        @ViewBuilder
+        var view: some View {
+            switch self {
+            case .loginOrganism:
+                LoginOrganismDetailView()
+            case .loginBottomSheet:
+                LoginBottomSheetDetailView()
+            case .balanceCard:
+                BalanceCardDetailView()
+            case .headerComponent:
+                TPEHeaderComponentDetailView()
+            case .menuListVertical:
+                TPEMenuListVerticalDetailView()
+            case .transactionSection:
+                TPETransactionSectionDetailView()
+            case .promoSection:
+                TPEPromoSectionDetailView()
+            }
+        }
+    }
+}
+
+// MARK: - Organism Card
+
+struct OrganismCard: View {
+    let item: OrganismItem
     
     var body: some View {
-        Button(action: action) {
+        NavigationLink(destination: item.destination.view) {
             VStack(alignment: .leading, spacing: 12) {
-                HStack {
-                    Image(systemName: variant.icon)
-                        .font(.system(size: 16))
-                        .foregroundColor(isSelected ? .white : .blue)
-                        .frame(width: 24)
+                // Icon
+                ZStack {
+                    Circle()
+                        .fill(item.category.color.opacity(0.1))
+                        .frame(width: 44, height: 44)
                     
-                    Spacer()
-                    
-                    if isSelected {
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 14))
-                            .foregroundColor(.white)
-                    }
+                    Image(systemName: item.icon)
+                        .font(.system(size: 18, weight: .medium))
+                        .foregroundColor(item.category.color)
+                        .symbolRenderingMode(.hierarchical)
                 }
                 
+                // Content
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(variant.rawValue)
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(isSelected ? .white : .primary)
+                    Text(item.title)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.primary)
                         .lineLimit(1)
                     
-                    Text(variant.description)
-                        .font(.system(size: 12, weight: .regular))
-                        .foregroundColor(isSelected ? .white.opacity(0.8) : .secondary)
+                    Text(item.subtitle)
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
                         .lineLimit(2)
-                        .fixedSize(horizontal: false, vertical: true)
                 }
                 
                 Spacer()
                 
+                // Category Badge
                 HStack {
-                    Text(variant.complexity)
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundColor(isSelected ? .white : .secondary)
+                    Text(item.category.rawValue)
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundColor(item.category.color)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(item.category.color.opacity(0.1))
+                        .cornerRadius(6)
                     
                     Spacer()
                     
-                    Text("\(Int(variant.cardHeight))pt")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundColor(isSelected ? .white : .blue)
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(.secondary)
                 }
             }
             .padding(16)
-            .frame(width: 160, height: 140)
-            .background(backgroundColor)
+            .frame(height: 160)
+            .background(Color(.systemBackground))
             .cornerRadius(12)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(borderColor, lineWidth: 2)
-            )
+            .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
         }
         .buttonStyle(ScaleButtonStyle())
     }
-    
-    private var backgroundColor: Color {
-        isSelected ? .blue : Color(.systemBackground)
-    }
-    
-    private var borderColor: Color {
-        isSelected ? .blue : Color.gray.opacity(0.2)
-    }
 }
 
-struct SuccessOverlay: View {
-    var body: some View {
-        ZStack {
-            Color.black.opacity(0.7)
-            
-            VStack(spacing: 16) {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 50))
-                    .foregroundColor(.green)
-                
-                Text("Login Successful!")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                
-                Text("Redirecting to dashboard...")
-                    .font(.body)
-                    .foregroundColor(.white.opacity(0.8))
-            }
-        }
-        .cornerRadius(16)
-    }
-}
+// MARK: - Category Color Extension
 
-struct CustomizationCard<Content: View>: View {
-    let icon: String
-    let title: String
-    let description: String
-    let content: () -> Content
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: icon)
-                    .foregroundColor(.blue)
-                    .font(.system(size: 14))
-                
-                Text(title)
-                    .font(.system(size: 14, weight: .semibold))
-                
-                Spacer()
-            }
-            
-            Text(description)
-                .font(.system(size: 12))
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-            
-            content()
-        }
-        .padding(16)
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
-    }
-}
-
-struct CustomTextField: View {
-    let placeholder: String
-    @Binding var text: String
-    
-    init(_ placeholder: String, text: Binding<String>) {
-        self.placeholder = placeholder
-        self._text = text
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(placeholder)
-                .font(.system(size: 12, weight: .medium))
-                .foregroundColor(.secondary)
-            
-            TextField(placeholder, text: $text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .font(.system(size: 14))
+extension OrganismCatalogView.OrganismCategory {
+    var color: Color {
+        switch self {
+        case .all: return .blue
+        case .authentication: return .green
+        case .navigation: return .orange
+        case .dataDisplay: return .purple
+        case .feedback: return .pink
+        case .layout: return .indigo
         }
     }
 }
-
-struct GuidelineCard: View {
-    let icon: String
-    let title: String
-    let description: String
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: icon)
-                    .foregroundColor(.blue)
-                
-                Text(title)
-                    .font(.system(size: 14, weight: .semibold))
-                
-                Spacer()
-            }
-            
-            Text(description)
-                .font(.system(size: 12))
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding(12)
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
-    }
-}
-
-struct CodeBlock: View {
-    let code: String
-    
-    var body: some View {
-        ScrollView {
-            Text(code)
-                .font(.system(.caption, design: .monospaced))
-                .foregroundColor(.primary)
-                .padding()
-        }
-        .background(Color(.systemGray6))
-        .cornerRadius(8)
-    }
-}
-
-// MARK: - Live Demo View
-struct LiveLoginDemo: View {
-    let variant: OrganismCatalogView.LoginVariant
-    let settings: OrganismCatalogView.LoginCustomizationSettings
-    @Environment(\.dismiss) private var dismiss
-    
-    var body: some View {
-        ZStack {
-            TPEOrganizmLoginTL(
-                config: LoginConfig(
-                    backgroundUrl: settings.showBackgroundImage ? variant.config.backgroundUrl : nil,
-                    title: settings.title,
-                    subtitle: settings.subtitle,
-                    loginText: settings.buttonText
-                ),
-                cardHeight: settings.cardHeight,
-                onLoginSuccess: {
-                    dismiss()
-                },
-                onRegisterSuccess: {
-                    // Handle registration
-                }
-            )
-            .ignoresSafeArea()
-            
-            // Close button
-            VStack {
-                HStack {
-                    Spacer()
-                    
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 30))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.black.opacity(0.3))
-                            .cornerRadius(20)
-                    }
-                    .padding(.top, 60)
-                    .padding(.trailing, 20)
-                }
-                
-                Spacer()
-            }
-        }
-        .statusBar(hidden: true)
-    }
-}
-
-//// MARK: - Previews
-//#Preview("Organism Catalog") {
-//    NavigationView {
-//        OrganismCatalogView()
-//    }
-//}
 

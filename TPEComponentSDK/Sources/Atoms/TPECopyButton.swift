@@ -30,11 +30,13 @@ public struct TPECopyButton: View {
     public var body: some View {
         Button(action: copyToClipboard) {
             HStack(spacing: 4) {
+                Text(copyText)
+                    .font(.system(size: 12, weight: .medium))
+                
                 Image(systemName: "doc.on.doc")
                     .font(.system(size: 14))
                 
-                Text(copyText)
-                    .font(.system(size: 12, weight: .medium))
+                
             }
             .foregroundColor(textColor ?? .blue)
         }

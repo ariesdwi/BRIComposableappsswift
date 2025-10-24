@@ -15,7 +15,7 @@ public struct TPECircleIconButton: View {
     let borderColor: Color?
     let borderWidth: CGFloat
     let onPressed: (() -> Void)?
-    let badgeCount: Int
+    let badgeCount: Int?
     let badgeColor: Color
     let badgeTextColor: Color
     let badgeSize: CGFloat
@@ -29,7 +29,7 @@ public struct TPECircleIconButton: View {
         borderColor: Color? = nil,
         borderWidth: CGFloat = 0,
         onPressed: (() -> Void)? = nil,
-        badgeCount: Int = 0,
+        badgeCount: Int? = nil,
         badgeColor: Color = .red,
         badgeTextColor: Color = .white,
         badgeSize: CGFloat = 17,
@@ -80,8 +80,8 @@ public struct TPECircleIconButton: View {
             .buttonStyle(CircleButtonStyle())
             .disabled(onPressed == nil)
             
-            // Badge - positioned exactly like Flutter (top: 9, right: 7)
-            if badgeCount > 0 {
+            // Badge - only show if badgeCount is provided and greater than 0
+            if let badgeCount = badgeCount, badgeCount > 0 {
                 TPECountBadgeIcon(
                     badgeCount: badgeCount,
                     badgeSize: badgeSize,

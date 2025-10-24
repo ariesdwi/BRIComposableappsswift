@@ -87,3 +87,28 @@ public struct TPEColors {
     // === OTHERS ===
     public static let transparent = Color.clear
 }
+
+
+public extension Color {
+    init?(hex: String) {
+        var cleanedHex = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: "#", with: "")
+
+        // Ensure valid 6 or 8 characters (RGB or RGBA)
+        if cleanedHex.count == 6 {
+            cleanedHex.append("FF") // add full alpha
+        }
+
+        guard cleanedHex.count == 8,
+              let rgbValue = UInt64(cleanedHex, radix: 16) else {
+            return nil
+        }
+
+        let red = Double((rgbValue >> 24) & 0xFF) / 255.0
+        let green = Double((rgbValue >> 16) & 0xFF) / 255.0
+        let blue = Double((rgbValue >> 8) & 0xFF) / 255.0
+        let alpha = Double(rgbValue & 0xFF) / 255.0
+
+        self.init(.sRGB, red: red, green: green, blue: blue, opacity: alpha)
+    }
+}

@@ -2,7 +2,7 @@
 import Foundation
 import Combine
 
-public class LoginViewModel: ObservableObject {
+public class LoginOrganizmViewModel: ObservableObject {
     @Published public var isLoading: Bool = false
     @Published public var errorMessage: String?
     

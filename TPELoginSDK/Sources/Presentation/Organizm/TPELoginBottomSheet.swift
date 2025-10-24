@@ -1,4 +1,3 @@
-
 //
 //  TPEBottomSheetLogin.swift
 //  TPEComposable
@@ -98,6 +97,9 @@ public struct TPELoginBottomSheet: View {
                         // Form fields
                         formFields
                         
+                        // CAPTCHA Component
+                        captchaSection
+                        
                         // Buttons
                         actionButtons
                     }
@@ -196,6 +198,72 @@ public struct TPELoginBottomSheet: View {
         }
     }
     
+    private var captchaSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            TPEText(
+                text: "CAPTCHA",
+                variant: .text14Regular,
+                color: .primary,
+                textAlignment: .leading
+            )
+            
+            HStack(spacing: 12) {
+                // CAPTCHA Image/Display
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.gray.opacity(0.1))
+                        .frame(height: 44)
+                    
+                    HStack {
+                        // CAPTCHA Text - You can replace this with actual CAPTCHA generation
+                        TPEText(
+                            text: viewModel.captchaText,
+                            variant: .text16Bold,
+                            color: .primary,
+                            textAlignment: .center
+                        )
+                        .padding(.horizontal, 12)
+                        
+                        Spacer()
+                        
+                        // Refresh button
+                        Button(action: {
+                            viewModel.generateNewCaptcha()
+                        }) {
+                            Image(systemName: "arrow.clockwise")
+                                .foregroundColor(.blue)
+                                .padding(8)
+                        }
+                    }
+                }
+                
+                // CAPTCHA Input Field
+                TextField("Enter CAPTCHA", text: $viewModel.captchaInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(height: 44)
+                    .onChange(of: viewModel.captchaInput) { newValue in
+                        // Limit CAPTCHA input length
+                        if newValue.count > 6 {
+                            viewModel.captchaInput = String(newValue.prefix(6))
+                        }
+                        viewModel.validateCaptcha()
+                    }
+            }
+            
+            // CAPTCHA Error Message
+            if viewModel.shouldShowCaptchaError {
+                TPEText(
+                    text: viewModel.captchaErrorMessage,
+                    variant: .text12Regular,
+                    color: .red,
+                    textAlignment: .leading
+                )
+                .padding(.top, 4)
+            }
+        }
+        .padding(.top, 8)
+    }
+    
     private var actionButtons: some View {
         VStack(spacing: 12) {
             // Login Button
@@ -205,17 +273,16 @@ public struct TPELoginBottomSheet: View {
                 size: .small,
                 roundType: .rounded,
                 isCentered: true,
-                isEnabled: viewModel.isFormValid,
+                isEnabled: viewModel.isFormValid && viewModel.isCaptchaValid,
                 isLoading: viewModel.isLoading,
-                
                 onPressed: handleLogin
             )
+            
             TPELinkText(
                 text: "Forgot Username/Password?",
                 color: TPEColors.primaryBlue,
                 onTap: onForgotPassword!
             )
-           
         }
         .padding(.top, 8)
     }
@@ -224,8 +291,9 @@ public struct TPELoginBottomSheet: View {
     
     private func handleLogin() {
         viewModel.validateForm()
+        viewModel.validateCaptcha()
         
-        guard viewModel.isFormValid else { return }
+        guard viewModel.isFormValid && viewModel.isCaptchaValid else { return }
         
         viewModel.isLoading = true
         
@@ -262,6 +330,12 @@ class LoginBottomSheetViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var hasAttemptedValidation: Bool = false
     
+    // CAPTCHA Properties
+    @Published var captchaText: String = ""
+    @Published var captchaInput: String = ""
+    @Published var isCaptchaValid: Bool = false
+    @Published var hasAttemptedCaptchaValidation: Bool = false
+    
     private let minimumUsernameLength: Int
     private let minimumPasswordLength: Int
     private let maximumInputChar: Int
@@ -270,6 +344,7 @@ class LoginBottomSheetViewModel: ObservableObject {
         self.minimumUsernameLength = minimumUsernameLength
         self.minimumPasswordLength = minimumPasswordLength
         self.maximumInputChar = maximumInputChar
+        self.generateNewCaptcha()
     }
     
     var isUsernameValid: Bool {
@@ -290,6 +365,10 @@ class LoginBottomSheetViewModel: ObservableObject {
     
     var shouldShowPasswordError: Bool {
         hasAttemptedValidation && !isPasswordValid && !password.isEmpty
+    }
+    
+    var shouldShowCaptchaError: Bool {
+        hasAttemptedCaptchaValidation && !isCaptchaValid && !captchaInput.isEmpty
     }
     
     var usernameErrorMessage: String {
@@ -314,8 +393,31 @@ class LoginBottomSheetViewModel: ObservableObject {
         return ""
     }
     
+    var captchaErrorMessage: String {
+        if captchaInput.isEmpty {
+            return "CAPTCHA is required"
+        } else if !isCaptchaValid {
+            return "CAPTCHA does not match"
+        }
+        return ""
+    }
+    
     func validateForm() {
         hasAttemptedValidation = true
+    }
+    
+    func validateCaptcha() {
+        hasAttemptedCaptchaValidation = true
+        isCaptchaValid = captchaInput.lowercased() == captchaText.lowercased()
+    }
+    
+    func generateNewCaptcha() {
+        // Generate a simple random CAPTCHA string
+        let characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+        captchaText = String((0..<5).map { _ in characters.randomElement()! })
+        captchaInput = ""
+        isCaptchaValid = false
+        hasAttemptedCaptchaValidation = false
     }
     
     func resetForm() {
@@ -325,6 +427,7 @@ class LoginBottomSheetViewModel: ObservableObject {
         showPassword = false
         isLoading = false
         hasAttemptedValidation = false
+        generateNewCaptcha()
     }
 }
 
@@ -380,28 +483,7 @@ public extension View {
 
 // MARK: - Preview
 
-//#Preview("TW Login") {
-//    struct PreviewWrapper: View {
-//        @State private var showSheet = true
-//        
-//        var body: some View {
-//            Color.clear
-//                .showTPELoginBottomSheet(
-//                    isPresented: $showSheet,
-//                    loginType: .tw,
-//                    onSaveSuccess: { data in
-//                        print("Login successful: \(data)")
-//                    },
-//                    onForgotPassword: {
-//                        print("Forgot password tapped")
-//                    }
-//                )
-//        }
-//    }
-//    return PreviewWrapper()
-//}
-
-#Preview("TL Login") {
+#Preview("TL Login with CAPTCHA") {
     struct PreviewWrapper: View {
         @State private var showSheet = true
         

@@ -1,217 +1,93 @@
-
-//
-//  DemoLoginFlow.swift
-//  TPEComposable
-//
-//  Created by PT Siaga Abdi Utama on 07/10/25.
-//
-
 import SwiftUI
 import TPEComponentSDK
 import TPELoginSDK
+import TPENetworkingCore
 
-public struct DemoLoginFlow: View {
-    @State private var currentScreen: LoginScreen = .welcome
+public struct LoginDemoView: View {
+    @EnvironmentObject private var viewModel: LoginViewModel
     @State private var showLoginBottomSheet = false
-    @State private var loginData: [String: Any] = [:]
-    
-    enum LoginScreen {
-        case welcome
-        case fullScreenLogin
-        case bottomSheetLogin
-        case dashboard
-    }
+    @State private var showErrorAlert = false
     
     public init() {}
     
     public var body: some View {
-        NavigationView {
-            ZStack {
-                // Main content based on current screen
-                Group {
-                    switch currentScreen {
-                    case .welcome:
-                        welcomeView
-                    case .fullScreenLogin:
-                        TPEOrganizmLoginTL(
-                            config: LoginConfig(
-                                title: "Welcome Back",
-                                subtitle: "Sign in to your account",
-                                loginText: "Sign In",
-                            ),
-                            onLoginSuccess: {
-                                // When login button is tapped in full screen, show bottom sheet
-                                showLoginBottomSheet = true
-                            },
-                            onRegisterSuccess: {
-                                // Handle register if needed
-                                print("Register tapped")
-                            }
-                        )
-                    case .bottomSheetLogin:
-                        Color.clear // Handled by sheet
-                    case .dashboard:
-                        dashboardView
-                    }
+        ZStack {
+            // MARK: - Main Login Layout
+            TPEOrganizmLoginTL(
+                config: LoginConfig(
+                    backgroundUrl: viewModel.showBackgroundImage ? viewModel.backgroundUrl : nil,
+                    backgroundColorHex: viewModel.backgroundColorHex,
+                    title: viewModel.title,
+                    subtitle: viewModel.subtitle,
+                    loginText: viewModel.loginButtonText
+                ),
+                cardHeight: viewModel.cardHeight,
+                onLoginSuccess: {
+                    await viewModel.handleLoginTapped()
+                    showLoginBottomSheet = true
+                },
+                onRegisterSuccess: {
+                    await viewModel.handleRegisterTapped()
                 }
-                
-                // Bottom sheet overlay
-                if showLoginBottomSheet {
-                    Color.black.opacity(0.4)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            showLoginBottomSheet = false
-                        }
-                }
+            )
+            .ignoresSafeArea()
+            
+            // Loading overlay
+            if viewModel.isLoading {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                ProgressView()
+                    .scaleEffect(1.5)
+                    .tint(.white)
             }
-            .navigationBarHidden(true)
         }
         .sheet(isPresented: $showLoginBottomSheet) {
             TPELoginBottomSheet(
                 isPresented: $showLoginBottomSheet,
                 loginType: .tl,
                 onSaveSuccess: { data in
-                    // Handle successful login from bottom sheet
-                    self.loginData = data
-                    self.showLoginBottomSheet = false
-                    self.currentScreen = .dashboard
-                    print("Login successful with data: \(data)")
+                    // Convert to synchronous closure and use Task for async work
+                    Task {
+                        await handleLoginSuccess(data: data)
+                    }
                 },
                 onForgotPassword: {
-                    // Handle forgot password
-                    print("Forgot password tapped")
+                    viewModel.handleForgotPassword()
                 },
-                titleText: "Sign In",
-                forgotPasswordText: "Forgot Username/Password?"
+                titleText: viewModel.bottomSheetTitle,
+                forgotPasswordText: viewModel.forgotPasswordText
             )
         }
+        .alert("Login Error", isPresented: $showErrorAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.loginError ?? "Unknown error occurred")
+        }
+        .statusBar(hidden: true)
+        .task {
+            await viewModel.fetchLoginConfig()
+        }
+        .onChange(of: viewModel.loginError) { error in
+            showErrorAlert = error != nil
+        }
     }
     
-    // MARK: - Welcome Screen
-    private var welcomeView: some View {
-        VStack(spacing: 30) {
-            Spacer()
-            
-            // App Icon/Logo
-            Image(systemName: "person.circle.fill")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .foregroundColor(.blue)
-            
-            // Welcome Text
-            VStack(spacing: 16) {
-                Text("Welcome to Demo App")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                
-                Text("Please sign in to continue to your account")
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            
-            Spacer()
-            
-            // Login Button
-            VStack(spacing: 16) {
-                TPEButton(
-                    title: "Sign In",
-                    variant: .primary,
-                    size: .large,
-                    roundType: .rounded,
-                    isCentered: true,
-                    onPressed: {
-                        // Navigate to full screen login
-                        currentScreen = .fullScreenLogin
-                    }
-                )
-                
-                // Alternative: Direct to bottom sheet
-                Button("Quick Sign In") {
-                    showLoginBottomSheet = true
-                }
-                .foregroundColor(.blue)
-                .font(.body)
-            }
-            .padding(.horizontal, 24)
-            
-            Spacer()
+    // MARK: - Handle Login Success
+    private func handleLoginSuccess(data: Any) async {
+        guard let credentials = data as? [String: String],
+              let username = credentials["username"],
+              let password = credentials["password"] else {
+            viewModel.loginError = "Invalid login data"
+            return
         }
-        .background(Color(.systemBackground))
-    }
-    
-    // MARK: - Dashboard Screen
-    private var dashboardView: some View {
-        VStack(spacing: 20) {
-            // Header
-            VStack(spacing: 16) {
-                Image(systemName: "checkmark.circle.fill")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .foregroundColor(.green)
-                
-                Text("Welcome to Dashboard!")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Text("You have successfully signed in")
-                    .font(.body)
-                    .foregroundColor(.secondary)
+        
+        let success = await viewModel.login(username: username, password: password)
+        
+        if success {
+            await MainActor.run {
+                showLoginBottomSheet = false
+                // Parent will automatically detect login state change and show homepage
             }
-            .padding(.top, 60)
-            
-            // Login Data Display
-            if !loginData.isEmpty {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Login Information:")
-                        .font(.headline)
-                        .padding(.bottom, 8)
-                    
-                    ForEach(Array(loginData.keys.sorted()), id: \.self) { key in
-                        if let value = loginData[key] {
-                            HStack {
-                                Text("\(key):")
-                                    .fontWeight(.medium)
-                                Spacer()
-                                Text("\(String(describing: value))")
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    }
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(12)
-                .padding(.horizontal, 24)
-            }
-            
-            Spacer()
-            
-            // Action Buttons
-            VStack(spacing: 12) {
-                TPEButton(
-                    title: "Sign Out",
-                    variant: .secondary,
-                    size: .medium,
-                    roundType: .rounded,
-                    isCentered: true,
-                    onPressed: {
-                        // Reset to welcome screen
-                        currentScreen = .welcome
-                        loginData = [:]
-                    }
-                )
-                
-                Button("Back to Welcome") {
-                    currentScreen = .welcome
-                }
-                .foregroundColor(.blue)
-            }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 40)
         }
-        .background(Color(.systemBackground))
     }
 }
-

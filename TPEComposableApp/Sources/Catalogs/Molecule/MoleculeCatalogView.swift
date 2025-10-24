@@ -1,3 +1,10 @@
+//
+//  MoleculeCatalogView.swift
+//  TPEComposable
+//
+//  Created by PT Siaga Abdi Utama on 06/10/25.
+//
+
 import SwiftUI
 import TPEComponentSDK
 
@@ -12,6 +19,7 @@ struct MoleculeCatalogView: View {
         case feedback = "Feedback"
         case layout = "Layout"
         case data = "Data Display"
+        case actions = "Actions"
         
         var id: String { rawValue }
         var title: String { rawValue }
@@ -24,85 +32,19 @@ struct MoleculeCatalogView: View {
             case .feedback: return "exclamationmark.circle"
             case .layout: return "rectangle.grid.2x2"
             case .data: return "list.bullet"
+            case .actions: return "bolt"
             }
         }
     }
     
-    let molecules: [MoleculeItem] = [
-        // Forms
-        MoleculeItem(
-            title: "Form Field",
-            subtitle: "Input fields with labels and validation",
-            icon: "square.and.pencil",
-            category: .forms,
-            destination: .formField,
-            atomsUsed: ["TPEText", "TPETextField", "Icon"],
-            complexity: "Simple"
-        ),
-        
-        MoleculeItem(
-            title: "Button Group",
-            subtitle: "Related action buttons in a group",
-            icon: "square.grid.2x2.fill",
-            category: .forms,
-            destination: .buttonGroup,
-            atomsUsed: ["TPEButton", "Spacer"],
-            complexity: "Medium"
-        ),
-        
-      
-        // Navigation
-        MoleculeItem(
-            title: "Card Header",
-            subtitle: "Card titles with actions and metadata",
-            icon: "rectangle.fill",
-            category: .navigation,
-            destination: .cardHeader,
-            atomsUsed: ["TPEText", "TPEButton", "Icon", "Spacer"],
-            complexity: "Medium"
-        ),
-        
-        MoleculeItem(
-            title: "Info Row",
-            subtitle: "Key-value information displays",
-            icon: "list.bullet",
-            category: .navigation,
-            destination: .infoRow,
-            atomsUsed: ["TPEText", "Icon", "Spacer"],
-            complexity: "Simple"
-        ),
-        
-        // Feedback
-        MoleculeItem(
-            title: "Loading Indicator",
-            subtitle: "Progress and loading states",
-            icon: "arrow.2.circlepath",
-            category: .feedback,
-            destination: .loadingIndicator,
-            atomsUsed: ["ProgressView", "TPEText", "Spacer"],
-            complexity: "Medium"
-        ),
-     
-        
-        MoleculeItem(
-            title: "Stat Card",
-            subtitle: "Metrics and statistics display",
-            icon: "chart.bar",
-            category: .data,
-            destination: .statCard,
-            atomsUsed: ["TPEText", "Icon", "Spacer"],
-            complexity: "Medium"
-        ),
-        
-        MoleculeItem(
-            title: "Login Card",
-            subtitle: "Metrics and statistics display",
-            icon: "chart.bar",
-            category: .data,
-            destination: .logincard,
-            atomsUsed: ["TPEText", "Icon", "Spacer"],
-            complexity: "Medium"
-        )
+    // MARK: - Easy to Update Molecule List
+    private let molecules: [MoleculeItem] = [
+        // Forms Category
+        .formField,
+        .buttonGroup,
+        .loginCard,
+        .copyableField,
+        .circleIconButton
     ]
     
     var filteredMolecules: [MoleculeItem] {
@@ -187,7 +129,7 @@ struct MoleculeCatalogView: View {
     }
 }
 
-// MARK: - Molecule Item Model
+// MARK: - Molecule Item Model with Static Properties
 
 struct MoleculeItem: Identifiable {
     let id = UUID()
@@ -199,14 +141,114 @@ struct MoleculeItem: Identifiable {
     let atomsUsed: [String]
     let complexity: String
     
+    // MARK: - Predefined Molecules - Easy to Add New Ones
+    
+    // Forms Category
+    static let formField = MoleculeItem(
+        title: "Form Field",
+        subtitle: "Input fields with labels and validation",
+        icon: "square.and.pencil",
+        category: .forms,
+        destination: .formField,
+        atomsUsed: ["TPEText", "TPEInputField", "Icon"],
+        complexity: "Simple"
+    )
+    
+    static let buttonGroup = MoleculeItem(
+        title: "Button Group",
+        subtitle: "Related action buttons in a group",
+        icon: "square.grid.2x2.fill",
+        category: .forms,
+        destination: .buttonGroup,
+        atomsUsed: ["TPEButton", "Spacer"],
+        complexity: "Medium"
+    )
+    
+    // Navigation Category
+    static let cardHeader = MoleculeItem(
+        title: "Card Header",
+        subtitle: "Card titles with actions and metadata",
+        icon: "rectangle.fill",
+        category: .navigation,
+        destination: .cardHeader,
+        atomsUsed: ["TPEText", "TPEButton", "Icon", "Spacer"],
+        complexity: "Medium"
+    )
+    
+    static let infoRow = MoleculeItem(
+        title: "Info Row",
+        subtitle: "Key-value information displays",
+        icon: "list.bullet",
+        category: .navigation,
+        destination: .infoRow,
+        atomsUsed: ["TPEText", "Icon", "Spacer"],
+        complexity: "Simple"
+    )
+    
+    // Feedback Category
+    static let loadingIndicator = MoleculeItem(
+        title: "Loading Indicator",
+        subtitle: "Progress and loading states",
+        icon: "arrow.2.circlepath",
+        category: .feedback,
+        destination: .loadingIndicator,
+        atomsUsed: ["ProgressView", "TPEText", "Spacer"],
+        complexity: "Medium"
+    )
+    
+    // Data Display Category
+    static let statCard = MoleculeItem(
+        title: "Stat Card",
+        subtitle: "Metrics and statistics display",
+        icon: "chart.bar",
+        category: .data,
+        destination: .statCard,
+        atomsUsed: ["TPEText", "Icon", "Spacer"],
+        complexity: "Medium"
+    )
+    
+    static let loginCard = MoleculeItem(
+        title: "Login Card",
+        subtitle: "Complete login form with validation",
+        icon: "person.crop.circle",
+        category: .data,
+        destination: .loginCard,
+        atomsUsed: ["TPEText", "TPEInputField", "TPEButton", "TPEEyeToggleButton"],
+        complexity: "Complex"
+    )
+    
+    // Actions Category
+    static let copyableField = MoleculeItem(
+        title: "Copyable Field",
+        subtitle: "Text fields with copy functionality",
+        icon: "doc.on.doc",
+        category: .actions,
+        destination: .copyableField,
+        atomsUsed: ["TPEInputField", "TPECopyButton", "Spacer"],
+        complexity: "Simple"
+    )
+    
+    static let circleIconButton = MoleculeItem(
+        title: "TPECircleIconButton",
+        subtitle: "Circular icon buttons with badges",
+        icon: "circle.circle",
+        category: .actions,
+        destination: .circleIconButton,
+        atomsUsed: ["TPECircleIconButton", "TPEButton", "Spacer"],
+        complexity: "Medium"
+    )
+    
+    // MARK: - Destination Enum
     enum MoleculeDestination {
         case formField
         case buttonGroup
         case cardHeader
         case infoRow
         case loadingIndicator
-        case logincard
         case statCard
+        case loginCard
+        case copyableField
+        case circleIconButton
         
         @ViewBuilder
         var view: some View {
@@ -223,14 +265,16 @@ struct MoleculeItem: Identifiable {
                 LoadingIndicatorMoleculeView()
             case .statCard:
                 StatCardMoleculeView()
-            case .logincard:
+            case .loginCard:
                 LoginCardMoleculeView()
+            case .copyableField:
+                TPECopyButtonCatalogView()
+            case .circleIconButton:
+                TPECircleIconButtonCatalogView()
             }
         }
     }
 }
-
-// MARK: - Molecule Card
 
 struct MoleculeCard: View {
     let item: MoleculeItem
@@ -323,23 +367,6 @@ struct MoleculeCard: View {
     }
 }
 
-// MARK: - Category Color Extension
-
-extension MoleculeCatalogView.MoleculeCategory {
-    var color: Color {
-        switch self {
-        case .all: return .blue
-        case .forms: return .green
-        case .navigation: return .indigo
-        case .feedback: return .orange
-        case .layout: return .purple
-        case .data: return .teal
-        }
-    }
-}
-
-// MARK: - Complexity Badge
-
 struct ComplexityBadge: View {
     let complexity: String
     
@@ -377,17 +404,15 @@ struct ComplexityBadge: View {
     }
 }
 
-// MARK: - Atom Chip
-
 struct AtomChip: View {
     let name: String
-    
+
     var body: some View {
         HStack(spacing: 4) {
             Image(systemName: "atom")
                 .font(.system(size: 8))
                 .foregroundColor(.blue)
-            
+
             Text(name)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundColor(.primary)
@@ -399,34 +424,16 @@ struct AtomChip: View {
     }
 }
 
-#Preview("Molecules Catalog") {
-    NavigationView {
-        MoleculeCatalogView()
+extension MoleculeCatalogView.MoleculeCategory {
+    var color: Color {
+        switch self {
+        case .all: return .blue
+        case .forms: return .green
+        case .navigation: return .indigo
+        case .feedback: return .orange
+        case .layout: return .purple
+        case .data: return .teal
+        case .actions: return .blue
+        }
     }
-}
-
-#Preview("Molecule Card") {
-    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-        MoleculeCard(item: MoleculeItem(
-            title: "Form Field",
-            subtitle: "Input fields with labels and validation",
-            icon: "square.and.pencil",
-            category: .forms,
-            destination: .formField,
-            atomsUsed: ["TPEText", "TPETextField", "Icon"],
-            complexity: "Simple"
-        ))
-        
-        MoleculeCard(item: MoleculeItem(
-            title: "Button Group",
-            subtitle: "Related action buttons in a group",
-            icon: "square.grid.2x2.fill",
-            category: .forms,
-            destination: .buttonGroup,
-            atomsUsed: ["TPEButton", "Spacer", "Divider"],
-            complexity: "Medium"
-        ))
-    }
-    .padding()
-    .background(Color(.systemGroupedBackground))
 }

@@ -1,40 +1,35 @@
-//
-//  TPETemplateLoginTL.swift
-//  TPEComposable
-//
-//  Created by PT Siaga Abdi Utama on 06/10/25.
-//
-
 import SwiftUI
 import TPEComponentSDK
 
 public struct TPEOrganizmLoginTL: View {
-    @StateObject private var viewModel: LoginViewModel
+    @StateObject private var viewModel: LoginOrganizmViewModel
     private let config: LoginConfig
     private let cardHeight: CGFloat
-    private let onLoginSuccess: (() -> Void)?
-    private let onRegisterSuccess: (() -> Void)?
+    private let onLoginSuccess: (() async -> Void)?
+    private let onRegisterSuccess: (() async -> Void)?
     
     public init(
         config: LoginConfig,
         cardHeight: CGFloat = 320,
-        onLoginSuccess: (() -> Void)? = nil,
-        onRegisterSuccess: (() -> Void)? = nil
+        onLoginSuccess: (() async -> Void)? = nil,
+        onRegisterSuccess: (() async -> Void)? = nil
     ) {
         self.config = config
         self.cardHeight = cardHeight
         self.onLoginSuccess = onLoginSuccess
         self.onRegisterSuccess = onRegisterSuccess
-        _viewModel = StateObject(wrappedValue: LoginViewModel(
-            loginUseCase: DefaultLoginUseCase(),
-            config: config
-        ))
+        _viewModel = StateObject(
+            wrappedValue: LoginOrganizmViewModel(
+                loginUseCase: DefaultLoginUseCase(),
+                config: config
+            )
+        )
     }
     
     public var body: some View {
         ZStack {
-            // Background
-            TPEColors.primaryBlue
+            // ✅ Dynamic Background Color
+            backgroundColor
                 .ignoresSafeArea()
             
             // Background Image
@@ -54,7 +49,6 @@ public struct TPEOrganizmLoginTL: View {
             if viewModel.isLoading {
                 Color.black.opacity(0.3)
                     .ignoresSafeArea()
-                
                 ProgressView()
                     .scaleEffect(1.5)
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
@@ -70,9 +64,24 @@ public struct TPEOrganizmLoginTL: View {
             }
         }
     }
-    
+}
+
+// MARK: - Background Color Logic
+private extension TPEOrganizmLoginTL {
+    /// Returns dynamic background color from config (if provided), else fallback
+    var backgroundColor: Color {
+        if let hex = config.backgroundColorHex, let color = Color(hex: hex) {
+            return color
+        } else {
+            return TPEColors.black
+        }
+    }
+}
+
+// MARK: - Background Image
+private extension TPEOrganizmLoginTL {
     @ViewBuilder
-    private var backgroundImage: some View {
+    var backgroundImage: some View {
         if let backgroundUrl = config.backgroundUrl, let url = URL(string: backgroundUrl) {
             AsyncImage(url: url) { phase in
                 switch phase {
@@ -94,7 +103,7 @@ public struct TPEOrganizmLoginTL: View {
         }
     }
     
-    private var fallbackImage: some View {
+    var fallbackImage: some View {
         if let uiImage = UIImage(
             named: "background-timles",
             in: .tpeComposable,
@@ -105,7 +114,6 @@ public struct TPEOrganizmLoginTL: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.white.opacity(0.8))
-//                    .frame(maxWidth: 200, maxHeight: 200)
                     .padding(.bottom, 100)
             )
         } else {
@@ -119,21 +127,31 @@ public struct TPEOrganizmLoginTL: View {
             )
         }
     }
-    
-    private func handleLogin() {
-        viewModel.login()
-        onLoginSuccess?()
+}
+
+// MARK: - Actions
+private extension TPEOrganizmLoginTL {
+    func handleLogin() {
+        Task {
+            await viewModel.login()
+            await onLoginSuccess?()
+        }
     }
     
-    private func handleRegister() {
-        viewModel.register()
-        onRegisterSuccess?()
+    func handleRegister() {
+        Task {
+            await viewModel.register()
+            await onRegisterSuccess?()
+        }
     }
 }
 
+
+// MARK: - Bundle Helper
 private class TPEBundleFinder {}
 private extension Bundle {
     static var tpeComposable: Bundle {
         return Bundle(for: TPEBundleFinder.self)
     }
 }
+

@@ -140,9 +140,8 @@ struct HomepageTemplateCatalogView: View {
                     backgroundImageUrl: customization.showBackgroundImage ? customization.backgroundImageUrl : nil,
                     header: customization.showHeader ? sampleHeader : nil,
                     balanceCard: customization.showBalanceCard ? sampleBalanceCard : nil,
-                    transactionSection: customization.showTransactions ? sampleTransactionSection : nil,
+                    listMenu: customization.showMenu ? sampleMenu : nil, transactionSection: customization.showTransactions ? sampleTransactionSection : nil,
                     promoSection: customization.showPromotions ? samplePromoSection : nil,
-                    listMenu: customization.showMenu ? sampleMenu : nil,
                     onRefreshTap: handleRefresh
                 )
               
@@ -378,66 +377,53 @@ struct HomepageTemplateCatalogView: View {
         )
     }
     
-    private var sampleMenu: TPEMenuListVertical {
-        TPEMenuListVertical(
-            menuItems: [
-                TPEMenuItemVertical(
-                    title: "Transfer",
-                    iconName: "arrow.left.arrow.right",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Transfer tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Pay Bills",
-                    iconName: "doc.text",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Pay Bills tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Top Up",
-                    iconName: "plus.circle",
-                    iconSize: 40,
-                    isNew: true, // shows red badge
-                    onTap: { print("Top Up tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "History",
-                    iconName: "clock",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("History tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Transfer",
-                    iconName: "arrow.left.arrow.right",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Transfer tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Pay Bills",
-                    iconName: "doc.text",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Pay Bills tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Top Up",
-                    iconName: "plus.circle",
-                    iconSize: 40,
-                    isNew: true, // shows red badge
-                    onTap: { print("Top Up tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "History",
-                    iconName: "clock",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("History tapped") }
-                )
-            ]
+    private var sampleMenu: TPEMenuListHorizontal {
+        let menuItems = [
+            TPEMenuItemHorizontal(
+                title: "Transfer",
+                iconUrl: nil, // No URL for fallback
+                iconSize: 40,
+                isNew: false,
+                onTap: {
+                   print("")
+                }
+            ),
+            TPEMenuItemHorizontal(
+                title: "Pay Bills",
+                iconUrl: nil,
+                iconSize: 40,
+                isNew: false,
+                onTap: {
+                    print("bills")
+                }
+            ),
+            TPEMenuItemHorizontal(
+                title: "Top Up",
+                iconUrl: nil,
+                iconSize: 40,
+                isNew: true,
+                onTap: {
+                    print("topup")
+                }
+            ),
+            TPEMenuItemHorizontal(
+                title: "History",
+                iconUrl: nil,
+                iconSize: 40,
+                isNew: false,
+                onTap: {
+                    print("history")
+                }
+            )
+        ]
+        
+        return TPEMenuListHorizontal(
+            menuItems: menuItems,
+            show: true,
+            spacing: 16,
+            itemWidth: 100,
+            horizontalPadding: 16,
+            verticalPadding: 8
         )
     }
     
@@ -475,9 +461,9 @@ struct FullScreenHomepageDemo: View {
             backgroundImageUrl: customization.showBackgroundImage ? customization.backgroundImageUrl : nil,
             header: customization.showHeader ? sampleHeader : nil,
             balanceCard: customization.showBalanceCard ? sampleBalanceCard : nil,
+            listMenu: customization.showMenu ? sampleMenu : nil,
             transactionSection: customization.showTransactions ? sampleTransactionSection : nil,
             promoSection: customization.showPromotions ? samplePromoSection : nil,
-            listMenu: customization.showMenu ? sampleMenu : nil,
             onRefreshTap: handleRefresh
         )
         .overlay(
@@ -611,66 +597,53 @@ struct FullScreenHomepageDemo: View {
         )
     }
     
-    private var sampleMenu: TPEMenuListVertical {
-        TPEMenuListVertical(
-            menuItems: [
-                TPEMenuItemVertical(
-                    title: "Transfer",
-                    iconName: "arrow.left.arrow.right",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Transfer tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Pay Bills",
-                    iconName: "doc.text",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Pay Bills tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Top Up",
-                    iconName: "plus.circle",
-                    iconSize: 40,
-                    isNew: true, // shows red badge
-                    onTap: { print("Top Up tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "History",
-                    iconName: "clock",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("History tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Transfer",
-                    iconName: "arrow.left.arrow.right",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Transfer tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Pay Bills",
-                    iconName: "doc.text",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("Pay Bills tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "Top Up",
-                    iconName: "plus.circle",
-                    iconSize: 40,
-                    isNew: true, // shows red badge
-                    onTap: { print("Top Up tapped") }
-                ),
-                TPEMenuItemVertical(
-                    title: "History",
-                    iconName: "clock",
-                    iconSize: 40,
-                    isNew: false,
-                    onTap: { print("History tapped") }
-                )
-            ]
+    private var sampleMenu: TPEMenuListHorizontal {
+        let menuItems = [
+            TPEMenuItemHorizontal(
+                title: "Transfer",
+                iconUrl: nil, // No URL for fallback
+                iconSize: 40,
+                isNew: false,
+                onTap: {
+                   print("")
+                }
+            ),
+            TPEMenuItemHorizontal(
+                title: "Pay Bills",
+                iconUrl: nil,
+                iconSize: 40,
+                isNew: false,
+                onTap: {
+                    print("bills")
+                }
+            ),
+            TPEMenuItemHorizontal(
+                title: "Top Up",
+                iconUrl: nil,
+                iconSize: 40,
+                isNew: true,
+                onTap: {
+                    print("topup")
+                }
+            ),
+            TPEMenuItemHorizontal(
+                title: "History",
+                iconUrl: nil,
+                iconSize: 40,
+                isNew: false,
+                onTap: {
+                    print("history")
+                }
+            )
+        ]
+        
+        return TPEMenuListHorizontal(
+            menuItems: menuItems,
+            show: true,
+            spacing: 16,
+            itemWidth: 100,
+            horizontalPadding: 16,
+            verticalPadding: 8
         )
     }
     

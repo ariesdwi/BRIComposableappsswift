@@ -91,16 +91,16 @@ public struct TPEHomepageTWType: View {
     let balanceCard: TPEBalanceCardTW?
     let transactionSection: TpeTransactionSection?
     let promoSection: TPEPromoSection?
-    let listMenu: TPEMenuListVertical?
+    let listMenu: TPEMenuListHorizontal?
     let onRefreshTap: () async -> Void
 
     public init(
         backgroundImageUrl: String? = nil,
         header: TPEHeaderComponent? = nil,
         balanceCard: TPEBalanceCardTW? = nil,
+        listMenu: TPEMenuListHorizontal? = nil,
         transactionSection: TpeTransactionSection? = nil,
         promoSection: TPEPromoSection? = nil,
-        listMenu: TPEMenuListVertical? = nil,
         onRefreshTap: @escaping () async -> Void
     ) {
         self.backgroundImageUrl = backgroundImageUrl
@@ -134,8 +134,8 @@ public struct TPEHomepageTWType: View {
                                 .ignoresSafeArea()
                             
                             header
-                                .padding(.leading, 36)
-                                .padding(.trailing, 16)
+                                .padding(.leading, 16)
+                                .padding(.trailing, 6)
                                 .padding(.bottom, 16)
                                 .padding(.top, 16)
                         }
@@ -143,7 +143,7 @@ public struct TPEHomepageTWType: View {
                     } else {
                         // Fallback on earlier versions
                         header
-                            .padding(.leading, 36)
+                            .padding(.leading, 16)
                             .padding(.trailing, 16)
                             .padding(.bottom, 16)
                             .padding(.top, 16)

@@ -1,0 +1,187 @@
+{
+  "status": true,
+  "message": "Homepage 'UKLN_ID' data retrieved successfully",
+  "data": {
+    "projectId": "UKLN_ID",
+    "header": {
+      "leftLogo": {
+        "url": "/uploads/ukln_logo.png",
+        "alt": "UKLN Bank Logo"
+      },
+      "rightLogo": {
+        "url": "/uploads/notification_icon.png",
+        "alt": "Notification Icon"
+      },
+      "title": "Halo, Selamat datang di UKLN",
+      "subtitle": "Nikmati pengalaman banking yang lebih baik"
+    },
+    "cardBalanced": {
+      "accountNumber": "17102170003",
+      "balance": "12321",
+      "balanceType": "IDR",
+      "images": [
+        {
+          "url": "/uploads/balance_card_bg.jpg",
+          "alt": "Balance Card Background"
+        }
+      ]
+    },
+    "menuItemHorizontal": {
+      "sectionHeader": {
+        "title": "Quick Actions",
+        "subtitle": "Frequently used services",
+        "onTap": "showAllQuickActions"
+      },
+      "items": [
+          {
+            "image": {
+              "url": "/uploads/transfer_icon.png",
+              "alt": "Transfer Icon"
+            },
+            "title": "Transfer"
+          },
+          {
+            "image": {
+              "url": "/uploads/bills_icon.png",
+              "alt": "Bills Icon"
+            },
+            "title": "Pay Bills"
+          },
+          {
+            "image": {
+              "url": "/uploads/topup_icon.png",
+              "alt": "Top Up Icon"
+            },
+            "title": "Top Up"
+          },
+          {
+            "image": {
+              "url": "/uploads/transfer_icon.png",
+              "alt": "Transfer Icon"
+            },
+            "title": "Transfer"
+          },
+        {
+          "image": {
+            "url": "/uploads/bills_icon.png",
+            "alt": "Bills Icon"
+          },
+          "title": "Pay Bills"
+        },
+        {
+          "image": {
+            "url": "/uploads/topup_icon.png",
+            "alt": "Top Up Icon"
+          },
+          "title": "Top Up"
+        }
+      ]
+    },
+    "menuItemVertical": {
+      "sectionHeader": {
+        "title": "All Services",
+        "subtitle": "Complete list of banking services",
+        "onTap": "showAllServices"
+      },
+      "items": [
+        {
+          "isLoading": false,
+          "activityStatus": 1,
+          "activityTitle": "Transfer Money",
+          "activityIcon": "/uploads/transfer_icon.png",
+          "activityDate": "Available 24/7",
+          "activityAmount": "Instant",
+          "activityText": "Send money to any bank account"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 1,
+          "activityTitle": "Pay Bills",
+          "activityIcon": "/uploads/bills_icon.png",
+          "activityDate": "Scheduled payments",
+          "activityAmount": "Auto-pay",
+          "activityText": "Electricity, water, internet bills"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 1,
+          "activityTitle": "Top Up Wallet",
+          "activityIcon": "/uploads/topup_icon.png",
+          "activityDate": "Instant processing",
+          "activityAmount": "Various methods",
+          "activityText": "Mobile credit & e-wallet top up"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 1,
+          "activityTitle": "Transaction History",
+          "activityIcon": "/uploads/history_icon.png",
+          "activityDate": "Real-time updates",
+          "activityAmount": "Complete records",
+          "activityText": "View all your transactions"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 3,
+          "activityTitle": "QR Code Payment",
+          "activityIcon": "/uploads/qr_icon.png",
+          "activityDate": "Scan & pay",
+          "activityAmount": "Quick payment",
+          "activityText": "Pay with QR code at merchants"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 2,
+          "activityTitle": "Investment",
+          "activityIcon": "/uploads/invest_icon.png",
+          "activityDate": "Grow your money",
+          "activityAmount": "Various options",
+          "activityText": "Mutual funds and other investments"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 1,
+          "activityTitle": "Rewards Program",
+          "activityIcon": "/uploads/rewards_icon.png",
+          "activityDate": "Loyalty points",
+          "activityAmount": "Exclusive offers",
+          "activityText": "Claim your rewards and benefits"
+        },
+        {
+          "isLoading": false,
+          "activityStatus": 1,
+          "activityTitle": "Customer Support",
+          "activityIcon": "/uploads/support_icon.png",
+          "activityDate": "24/7 available",
+          "activityAmount": "Multiple channels",
+          "activityText": "Get help anytime you need"
+        }
+      ]
+    },
+    "bannerSection": {
+      "sectionHeader": {
+        "title": "Special Promotions",
+        "subtitle": "Exclusive offers for you",
+        "onTap": "showAllPromotions"
+      },
+      "images": [
+        {
+          "url": "/uploads/promo_banner_1.jpg",
+          "alt": "Cashback 20% for all restaurants"
+        },
+        {
+          "url": "/uploads/promo_banner_2.jpg",
+          "alt": "Free international transfers"
+        },
+        {
+          "url": "/uploads/promo_banner_3.jpg",
+          "alt": "Weekend special rewards"
+        },
+        {
+          "url": "/uploads/promo_banner_4.jpg",
+          "alt": "New investment opportunities"
+        }
+      ]
+    }
+  }
+}

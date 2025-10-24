@@ -5,7 +5,6 @@
 //  Created by PT Siaga Abdi Utama on 14/10/25.
 //
 
-import Alamofire
 import Foundation
 
 public protocol NetworkServiceProtocol {
@@ -28,14 +27,14 @@ public protocol NetworkServiceProtocol {
 
 public final class NetworkService: NetworkServiceProtocol {
     
-    private let session: Session
+    private let session: URLSession
     private let logger: NetworkLoggerProtocol?
     
     public init(
         configuration: URLSessionConfiguration = .default,
         logger: NetworkLoggerProtocol? = nil
     ) {
-        self.session = Session(configuration: configuration)
+        self.session = URLSession(configuration: configuration)
         self.logger = logger
     }
     
@@ -47,19 +46,22 @@ public final class NetworkService: NetworkServiceProtocol {
         
         logger?.logRequest(request)
         
-        let response = await session.request(request)
-            .validate()
-            .serializingDecodable(T.self)
-            .response
+        let (data, response) = try await session.data(for: request)
+        logger?.logResponse(data: data, response: response)
         
-        logger?.logResponse(response)
-        
-        switch response.result {
-        case .success(let value):
-            return value
-        case .failure(let error):
-            throw handleError(error, response: response.response)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
         }
+        
+        try validateStatusCode(httpResponse.statusCode)
+        
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            throw APIError.decodingError(error)
+        }
+        
     }
     
     public func request(_ endpoint: Endpoint) async throws {
@@ -67,16 +69,16 @@ public final class NetworkService: NetworkServiceProtocol {
         
         logger?.logRequest(request)
         
-        let response = await session.request(request)
-            .validate()
-            .serializingData()
-            .response
-        
-        logger?.logResponse(response)
-        
-        if let error = response.error {
-            throw handleError(error, response: response.response)
+        let (data, response) = try await session.data(for: request)
+            
+        logger?.logResponse(data: data, response: response)
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
         }
+        
+        try validateStatusCode(httpResponse.statusCode)
+       
+       
     }
     
     public func upload<T: Decodable>(
@@ -88,19 +90,21 @@ public final class NetworkService: NetworkServiceProtocol {
         
         logger?.logRequest(request)
         
-        let response = await session.upload(data, with: request)
-            .validate()
-            .serializingDecodable(T.self)
-            .response
+        let (responseData, response) = try await session.upload(for: request, from: data)
+        logger?.logResponse(data: responseData, response: response)
+        guard let httpResponse = response as? HTTPURLResponse else {
+                   throw APIError.invalidResponse
+               }
+               
+               try validateStatusCode(httpResponse.statusCode)
+               
+               do {
+                   let decoder = JSONDecoder()
+                   return try decoder.decode(T.self, from: responseData)
+               } catch {
+                   throw APIError.decodingError(error)
+               }
         
-        logger?.logResponse(response)
-        
-        switch response.result {
-        case .success(let value):
-            return value
-        case .failure(let error):
-            throw handleError(error, response: response.response)
-        }
     }
     
     private func createRequest(from endpoint: Endpoint) throws -> URLRequest {
@@ -143,24 +147,19 @@ public final class NetworkService: NetworkServiceProtocol {
         return url
     }
     
-    private func handleError(_ error: AFError, response: HTTPURLResponse?) -> APIError {
-        if let statusCode = response?.statusCode {
-            switch statusCode {
-            case 401:
-                return .unauthorized
-            case 400...499:
-                return .statusCode(statusCode)
-            case 500...599:
-                return .serverError("Server error: \(statusCode)")
-            default:
-                break
-            }
-        }
-        
-        if error.isResponseSerializationError {
-            return .decodingError(error)
-        }
-        
-        return .networkError(error)
-    }
+    
+    private func validateStatusCode(_ statusCode: Int) throws {
+           switch statusCode {
+           case 200...299:
+               return // Success
+           case 401:
+               throw APIError.unauthorized
+           case 400...499:
+               throw APIError.statusCode(statusCode)
+           case 500...599:
+               throw APIError.serverError("Server error: \(statusCode)")
+           default:
+               throw APIError.statusCode(statusCode)
+           }
+       }
 }

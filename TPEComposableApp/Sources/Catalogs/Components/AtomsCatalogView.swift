@@ -1,117 +1,3 @@
-////
-////  AtomsCatalogView.swift
-////  TPEComposable
-////
-////  Created by PT Siaga Abdi Utama on 06/10/25.
-////
-//
-//import SwiftUI
-//import TPEComponentSDK
-//
-//struct AtomsCatalogView: View {
-//    var body: some View {
-//        ScrollView {
-//            LazyVStack(alignment: .leading, spacing: 32) {
-//                HeaderView(
-//                    title: "Atoms",
-//                    subtitle: "Basic building blocks of our design system"
-//                )
-//                
-//                // Buttons Section
-//                ComponentSection(title: "Buttons", icon: "button.programmable") {
-//                    VStack(spacing: 16) {
-//                        TPEButton(
-//                            title: "Primary Action",
-//                            variant: .primary,
-//                            onPressed: {}
-//                        )
-//                        
-//                        TPEButton(
-//                            title: "Secondary Action",
-//                            variant: .secondary,
-//                            onPressed: {}
-//                        )
-//                        
-//                        TPEButton(
-//                            title: "Disabled State",
-//                            variant: .primary,
-//                            isEnabled: false,
-//                            onPressed: {}
-//                        )
-//                    }
-//                }
-//                
-//                // Text Section
-//                ComponentSection(title: "Typography", icon: "textformat") {
-//                    VStack(alignment: .leading, spacing: 12) {
-//                        TPEText(
-//                            text: "Display Headline",
-//                            variant: .text16Bold,
-//                            color: .primary,
-//                            textAlignment: .leading
-//                        )
-//                        
-//                        TPEText(
-//                            text: "Supporting text that provides additional context and can span multiple lines for detailed descriptions.",
-//                            variant: .secondary,
-//                            color: .secondary,
-//                            textAlignment: .leading
-//                        )
-//                    }
-//                }
-//                
-//                // Form Elements Section
-//                ComponentSection(title: "Form Elements", icon: "square.and.pencil") {
-//                    VStack(spacing: 16) {
-//                        // Example form field using atoms
-//                        HStack {
-//                            Image(systemName: "envelope")
-//                                .foregroundColor(.gray)
-//                            
-//                            TextField("Email address", text: .constant(""))
-//                                .textFieldStyle(PlainTextFieldStyle())
-//                        }
-//                        .padding()
-//                        .background(Color(.systemGray6))
-//                        .cornerRadius(8)
-//                    }
-//                }
-//            }
-//            .padding()
-//        }
-//        .navigationTitle("Atoms")
-//        .navigationBarTitleDisplayMode(.large)
-//    }
-//}
-//
-//struct ComponentSection<Content: View>: View {
-//    let title: String
-//    let icon: String
-//    let content: () -> Content
-//    
-//    var body: some View {
-//        VStack(alignment: .leading, spacing: 20) {
-//            HStack {
-//                Image(systemName: icon)
-//                    .foregroundColor(.blue)
-//                    .font(.system(size: 18))
-//                
-//                Text(title)
-//                    .font(.title3)
-//                    .fontWeight(.semibold)
-//                
-//                Spacer()
-//            }
-//            
-//            content()
-//                .padding()
-//                .background(Color(.systemBackground))
-//                .cornerRadius(12)
-//                .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
-//        }
-//    }
-//}
-
 //
 //  AtomsCatalogView.swift
 //  TPEComposable
@@ -149,67 +35,23 @@ struct AtomsCatalogView: View {
         }
     }
     
-    let atoms: [AtomItem] = [
-        // Buttons
-        AtomItem(
-            title: "TPEButton",
-            subtitle: "Primary, secondary, and variant buttons",
-            icon: "button.programmable",
-            category: .buttons,
-            destination: .tpeButton
-        ),
+    // MARK: - Easy to Update Atom List
+    private let atoms: [AtomItem] = [
+        // Buttons Category
+        .tpeButton,
+        // Form Elements Category
+        .inputField,
+        .eyeToggleButton,
         
-        // Typography
-        AtomItem(
-            title: "TPEText",
-            subtitle: "Text styles and typography system",
-            icon: "textformat",
-            category: .typography,
-            destination: .tpeText
-        ),
+        // Indicators Category
+        .balanceIndicator,
         
-        // Form Elements
-        AtomItem(
-            title: "Input Fields",
-            subtitle: "Text fields and input components",
-            icon: "square.and.pencil",
-            category: .formElements,
-            destination: .inputFields
-        ),
+        // Typography Category
+        .tpeText,
+        .tpeLink,
         
-        AtomItem(
-            title: "Checkbox & Toggle",
-            subtitle: "Selection and toggle components",
-            icon: "checkmark.square",
-            category: .formElements,
-            destination: .checkboxToggle
-        ),
+      
         
-        // Indicators
-        AtomItem(
-            title: "Progress Indicators",
-            subtitle: "Loading and progress indicators",
-            icon: "circle.hexagongrid",
-            category: .indicators,
-            destination: .progressIndicators
-        ),
-        
-        AtomItem(
-            title: "TPELink",
-            subtitle: "Link library and usage",
-            icon: "star",
-            category: .indicators,
-            destination: .link
-        ),
-        
-        // Navigation
-        AtomItem(
-            title: "Navigation Items",
-            subtitle: "Back buttons and navigation elements",
-            icon: "arrow.triangle.turn.up.right.diamond",
-            category: .navigation,
-            destination: .navigationItems
-        )
     ]
     
     var filteredAtoms: [AtomItem] {
@@ -267,7 +109,7 @@ struct AtomsCatalogView: View {
     }
 }
 
-// MARK: - Atom Item Model
+// MARK: - Atom Item Model with Static Properties
 
 struct AtomItem: Identifiable {
     let id = UUID()
@@ -277,32 +119,127 @@ struct AtomItem: Identifiable {
     let category: AtomsCatalogView.AtomCategory
     let destination: AtomDestination
     
+    // MARK: - Predefined Atoms - Easy to Add New Ones
+    
+    // Buttons
+    static let tpeButton = AtomItem(
+        title: "TPEButton",
+        subtitle: "Primary, secondary, and variant buttons",
+        icon: "button.programmable",
+        category: .buttons,
+        destination: .tpeButton
+    )
+    
+    static let circleIconButton = AtomItem(
+        title: "TPECircleIconButton",
+        subtitle: "Circular icon buttons with badges",
+        icon: "circle.circle",
+        category: .buttons,
+        destination: .circleIconButton
+    )
+    
+    // Form Elements
+    static let inputField = AtomItem(
+        title: "TPEInputField",
+        subtitle: "Text fields and input components",
+        icon: "square.and.pencil",
+        category: .formElements,
+        destination: .inputField
+    )
+    
+    static let eyeToggleButton = AtomItem(
+        title: "TPEEyeToggleButton",
+        subtitle: "Toggle visibility for sensitive content",
+        icon: "eye",
+        category: .formElements,
+        destination: .eyeToggleButton
+    )
+    
+    // Indicators
+    static let balanceIndicator = AtomItem(
+        title: "TPEBalanceIndicator",
+        subtitle: "Visual balance and progress indicators",
+        icon: "circle.grid.3x3",
+        category: .indicators,
+        destination: .balanceIndicator
+    )
+    
+    // Typography
+    static let tpeText = AtomItem(
+        title: "TPEText",
+        subtitle: "Text styles and typography system",
+        icon: "textformat",
+        category: .typography,
+        destination: .tpeText
+    )
+    
+    static let tpeLink = AtomItem(
+        title: "TPELink",
+        subtitle: "Link components and navigation",
+        icon: "link",
+        category: .typography,
+        destination: .tpeLink
+    )
+    
+    static let copyButton = AtomItem(
+           title: "TPECopyButton",
+           subtitle: "Copy text to clipboard with feedback",
+           icon: "doc.on.doc",
+           category: .buttons,
+           destination: .copyButton
+       )
+    
+    // Navigation
+//    static let progressIndicators = AtomItem(
+//        title: "Progress Indicators",
+//        subtitle: "Loading and progress indicators",
+//        icon: "circle.hexagongrid",
+//        category: .navigation,
+//        destination: .progressIndicators
+//    )
+    
+    // MARK: - Easy to Add New Atoms Here
+    /*
+    static let newComponent = AtomItem(
+        title: "New Component",
+        subtitle: "Description of new component",
+        icon: "star",
+        category: .buttons, // Choose appropriate category
+        destination: .newComponent
+    )
+    */
+    
+    // MARK: - Destination Enum
     enum AtomDestination {
         case tpeButton
+        case circleIconButton
+        case inputField
+        case eyeToggleButton
+        case balanceIndicator
         case tpeText
-        case inputFields
-        case checkboxToggle
-        case progressIndicators
-        case link
-        case navigationItems
+        case tpeLink
+        case copyButton
+
         
         @ViewBuilder
         var view: some View {
             switch self {
             case .tpeButton:
                 TPEButtonCatalogView()
+            case .circleIconButton:
+                TPECircleIconButtonCatalogView()
+            case .inputField:
+                TPEInputFieldCatalogView()
+            case .eyeToggleButton:
+                TPEEyeToggleButtonCatalogView()
+            case .balanceIndicator:
+                TPEBalanceIndicatorCatalogView()
             case .tpeText:
                 TPETextCatalogView()
-            case .inputFields:
-                InputFieldsCatalogView()
-            case .checkboxToggle:
-                CheckboxToggleCatalogView()
-            case .progressIndicators:
-                ProgressIndicatorsCatalogView()
-            case .link:
+            case .tpeLink:
                 TpeLinkCatalogView()
-            case .navigationItems:
-                NavigationItemsCatalogView()
+            case .copyButton:
+                TPECopyButtonCatalogView()
             }
         }
     }
@@ -385,35 +322,59 @@ extension AtomsCatalogView.AtomCategory {
     }
 }
 
-//// MARK: - Previews
-//
-//#Preview("Atoms Catalog") {
-//    NavigationView {
-//        AtomsCatalogView()
-//    }
-//}
-//
-//#Preview("Empty State") {
-//    NavigationView {
-//        ScrollView {
-//            LazyVStack(spacing: 24) {
-//                HeaderView(
-//                    title: "Atoms",
-//                    subtitle: "Basic building blocks of our design system"
-//                )
-//                
-//                SearchBar(text: .constant("Invalid Search"), placeholder: "Search atoms...")
-//                
-//                CategoryFilter(
-//                    selectedCategory: .constant(.buttons),
-//                    categories: AtomsCatalogView.AtomCategory.allCases
-//                )
-//                
-//                EmptyStateView.noResults(query: "Invalid Search")
-//            }
-//            .padding()
-//        }
-//        .background(Color(.systemGroupedBackground))
-//        .navigationTitle("Atoms")
-//    }
-//}
+// MARK: - Helper Extension for Easy Updates
+
+extension AtomsCatalogView {
+    /// Helper method to get all atoms for a specific category
+    func atoms(in category: AtomCategory) -> [AtomItem] {
+        atoms.filter { $0.category == category }
+    }
+    
+    /// Helper method to get atom count by category
+    var atomCountByCategory: [AtomCategory: Int] {
+        Dictionary(grouping: atoms, by: { $0.category })
+            .mapValues { $0.count }
+    }
+}
+
+// MARK: - Placeholder for Missing Catalog Views
+
+struct ProgressIndicatorsCatalogView: View {
+    var body: some View {
+        ScrollView {
+            LazyVStack(spacing: 24) {
+                HeaderView(
+                    title: "Progress Indicators",
+                    subtitle: "Loading and progress indicator components"
+                )
+                
+                Text("Progress Indicators Catalog")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding()
+            }
+            .padding()
+        }
+        .navigationTitle("Progress Indicators")
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+// MARK: - Previews
+
+#Preview("Atoms Catalog") {
+    NavigationView {
+        AtomsCatalogView()
+    }
+}
+
+#Preview("Atom Card") {
+    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+        AtomCard(item: .tpeButton)
+        AtomCard(item: .inputField)
+        AtomCard(item: .balanceIndicator)
+        AtomCard(item: .eyeToggleButton)
+    }
+    .padding()
+}
